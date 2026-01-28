@@ -1,11 +1,17 @@
 /* ===== Variaveis & Tema ===== */
 :root {
+  /* Cores Base (Mantidas) */
   --bg: #0b1220;
   --card: #0f1a2d;
   --text: #e7eefc;
   --muted: #a8b6d6;
   --border: rgba(255, 255, 255, 0.08);
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  
+  /* NOVOS GRADIENTES & SOMBRAS */
+  --brand-gradient: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  --brand-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+  --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  
   --brand: #7dd3fc;
   --ok: #86efac;
   --warn: #fde68a;
@@ -15,12 +21,17 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f6f7fb;
+  --bg: #f8fafc; /* Um cinza super leve, melhor que branco puro */
   --card: #ffffff;
   --text: #0f172a;
   --muted: #475569;
-  --border: rgba(15, 23, 42, 0.12);
-  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --border: rgba(148, 163, 184, 0.2);
+  
+  /* NOVOS GRADIENTES LIGHT */
+  --brand-gradient: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  --brand-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  --card-hover-shadow: 0 20px 40px rgba(148, 163, 184, 0.15);
+
   --brand: #0284c7;
   --ok: #15803d;
   --warn: #b45309;
@@ -116,13 +127,31 @@ h3 {
   background: #bae6fd;
 }
 
-.card {
+/* Cards e Details */
+.card, details.card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
+  border-radius: 20px; /* Mais moderno */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+}
+
+/* Hover nos cards (exceto se estiver aberto/fechado, foca no container) */
+details.card:hover, .card:hover {
+  border-color: rgba(125, 211, 252, 0.3);
+  box-shadow: var(--card-hover-shadow);
+  /* transform: translateY(-3px);  <-- Opcional: Levanta o card */
+}
+
+/* Hero Card Especial */
+.hero__card {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.08) 0%, rgba(15, 23, 42, 0) 100%);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  backdrop-filter: blur(10px);
+}
+:root[data-theme="light"] .hero__card {
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.05) 0%, rgba(255,255,255,0) 100%);
+  border-color: rgba(2, 132, 199, 0.15);
 }
 
 .badge {
@@ -811,3 +840,215 @@ th {
   border-color: var(--brand);
   background: rgba(255, 255, 255, 0.1);
 }
+
+
+
+/* ========================================= */
+/* TELA DE LOGIN ANIMADA                     */
+/* ========================================= */
+
+/* Animação do Cadeado */
+@keyframes floatLock {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.login-card div[style*="font-size: 3rem"] {
+  animation: floatLock 3s ease-in-out infinite;
+  display: inline-block;
+  text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.pin-input {
+  background: rgba(125, 211, 252, 0.05);
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 1.5rem; /* Ajustado para caber senha longa */
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  outline: none;
+  transition: all 0.3s;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pin-input:focus {
+  border-color: var(--brand);
+  background: var(--card);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+  transform: scale(1.02);
+}
+
+.login-overlay {
+  backdrop-filter: blur(8px); /* Blur mais forte */
+  background-color: rgba(11, 18, 32, 0.85); /* Fundo mais transparente */
+}
+
+/* Botão de Entrar (Login) */
+.login-form .btn--lg {
+  width: 100%; /* Botão ocupa toda largura */
+  margin-top: 10px;
+}
+
+
+/* ========================================= */
+/* ESTILOS DOS EXPANDERS (DETAILS/SUMMARY)   */
+/* ========================================= */
+
+details.card {
+  padding: 0; /* Remove padding padrão do card para controlar no filho */
+  overflow: hidden; /* Garante que o conteúdo não vaze nas bordas arredondadas */
+  transition: all 0.3s ease;
+}
+
+summary {
+  list-style: none; /* Remove seta padrão feia do navegador */
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.01);
+  transition: background 0.2s;
+}
+
+summary:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Esconde a seta padrão no Chrome/Safari */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Título dentro do summary */
+summary h2 {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font-size: 1.3rem; /* Leve ajuste de tamanho */
+}
+
+/* Ícone da seta customizada */
+summary::after {
+  content: "▼";
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: transform 0.3s;
+}
+
+/* Quando aberto, gira a seta */
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Quando aberto, muda levemente a cor do header */
+details[open] summary {
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Área de conteúdo interno */
+.details-content {
+  padding: 24px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+/* ========================================= */
+/* ANIMAÇÕES GERAIS                          */
+/* ========================================= */
+
+/* Animação de entrada (Fade In + Slide Up) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica a animação nos containers principais */
+main > section, 
+main > details, 
+.hero__card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Cascata de delay para ficar elegante */
+.hero__card { animation-delay: 0.1s; }
+details:nth-of-type(1) { animation-delay: 0.2s; }
+details:nth-of-type(2) { animation-delay: 0.3s; }
+details:nth-of-type(3) { animation-delay: 0.4s; }
+
+
+
+/* ========================================= */
+/* GRID DO FAQ (2 COLUNAS)                   */
+/* ========================================= */
+
+#faqList {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide a tela em 2 colunas iguais */
+  gap: 16px; /* Espaço entre os cartões */
+  align-items: start; /* Impede que um item estique a altura do vizinho */
+}
+
+/* Novo visual do Item de FAQ (Estilo Card) */
+.acc {
+  background: rgba(1, 203, 253, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px; /* Cantos arredondados */
+  overflow: hidden; /* Garante que o conteúdo respeite a borda */
+  transition: all 0.2s;
+}
+
+/* Efeito ao passar o mouse */
+.acc:hover {
+  border-color: var(--brand);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Ajuste do botão para ficar bonito no card */
+.acc__btn {
+  border: none; /* Remove a borda antiga de baixo */
+  margin: 0;
+}
+
+/* Ajuste do painel de resposta */
+.acc__panel {
+  border-top: 1px solid var(--border); /* Linha separando pergunta da resposta */
+  background: rgba(2, 247, 63, 0.1); /* Fundo levemente mais escuro na resposta */
+  margin-top: 0;
+  padding: 16px; /* Mais espaçamento interno */
+}
+
+/* RESPONSIVIDADE: Volta para 1 coluna no celular */
+@media (max-width: 768px) {
+  #faqList {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

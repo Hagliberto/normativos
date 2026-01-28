@@ -1,6 +1,4 @@
 <!doctype html>
-<html lang="pt-BR">
-
 <html lang="pt-BR" data-theme="light">
 
 <head>
@@ -8,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gestão de Intervalos — Guia de Consulta + FAQ (CAERN)</title>
   <meta name="description"
-    content="Guia de consulta sobre intervalos, escalas e vedações. Orientações para gestor, empregado e Núcleo de Pessoal/RH. A consulta oficial deve ser feita nos normativos." />
+    content="Guia de consulta sobre intervalos, escalas e vedações. Orientações para gestor, empregado e Núcleo de Pessoal/RH." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -16,8 +14,6 @@
 </head>
 
 <body>
-  <!-- <a class="skip" href="#conteudo">Pular para o conteúdo</a> -->
-
   <header class="topbar">
     <div class="container container--wide topbar__inner">
       <div class="brand">
@@ -39,17 +35,17 @@
         <button class="btn btn--ghost" id="btnTheme" type="button" title="Alternar tema">🌗 Tema</button>
         <button class="btn btn--ghost" id="btnPrint" type="button" title="Imprimir">🖨️ Imprimir</button>
         <button class="btn btn--ghost" id="btnLogout" type="button" title="Sair do sistema">🚪 Sair</button>
-
       </div>
     </div>
   </header>
 
   <main id="conteudo" class="container container--wide">
-    <d class="hero__card">
+
+    <div class="hero__card" style="margin-bottom: 24px;">
       <h1>
         Gestão de Intervalos e Jornada
         <span class="badge badge--danger"
-          style="vertical-align: middle; font-size: 0.5em; margin-left: 10px;">OBRIGATÓRIO</span>
+          style="vertical-align: middle; font-size: 0.4em; margin-left: 10px; color: rgb(148, 150, 148)">Orientações</span>
       </h1>
 
       <h3 style="color: var(--brand); margin-top: -10px;">
@@ -85,7 +81,6 @@
         <li class="pill">🚫 Vedação à Informalidade</li>
       </ul>
 
-
       <div class="kpis" aria-label="Resumo rápido">
         <div class="kpi">
           <div class="kpi__label">Interjornada</div>
@@ -102,28 +97,30 @@
           <div class="kpi__label">Banco de Horas (+)</div>
           <div class="kpi__value">6 meses</div>
           <div class="kpi__hint">Prazo máx. compensação</div>
-          <div class="micro-note">*Necessita autorização do gestor.</div>
+          <div class="micro-note">*Necessita autorização.</div>
         </div>
         <div class="kpi">
           <div class="kpi__label">Banco de Horas (-)</div>
           <div class="kpi__value">1 mês</div>
           <div class="kpi__hint">Prazo máx. compensação</div>
-          <div class="micro-note">*Necessita autorização do gestor.</div>
-
+          <div class="micro-note">*Necessita autorização.</div>
         </div>
         <div class="kpi">
           <div class="kpi__label">Ajuda de Custo</div>
           <div class="kpi__value">R$ 34,36</div>
           <div class="kpi__hint">Jornada Administrativa</div>
-          <div class="micro-note">*Necessita autorização do gestor.</div>
+          <div class="micro-note">*Conforme regras ACT.</div>
         </div>
       </div>
-      </div>
-      </section>
+    </div>
 
-      <section id="normativa" class="card">
+    <!-- <details id="normativa" class="card" open> -->
+    <details id="normativa" class="card" close>
+      <summary>
         <h2>📚 Base Normativa & Consulta</h2>
+      </summary>
 
+      <div class="details-content">
         <div class="grid4">
           <button type="button" class="doc-link" onclick="openPdfViewer('norma')">
             <div class="doc-icon">📜</div>
@@ -143,7 +140,7 @@
             <div class="doc-icon">📘</div>
             <strong>Manual de Ponto</strong>
             <span>Guia Operacional</span>
-            <small>Onde consultar: Portal do Colaborador</small>
+            <small>Portal do Colaborador</small>
           </button>
 
           <button type="button" class="doc-link" onclick="openPdfViewer('cartilha')">
@@ -182,36 +179,100 @@
           <button class="pill pill--action" onclick="quickSearch('banco de horas')">Banco de Horas</button>
           <button class="pill pill--action" onclick="quickSearch('tolerância')">Tolerância (15min)</button>
         </div>
-      </section>
+      </div>
+    </details>
 
-      <section class="grid2" id="regras">
-        <article class="card">
+    <div id="regras">
+
+      <details class="card">
+        <summary>
           <h2>Tabela Padrão de Intervalos</h2>
+        </summary>
+
+        <div class="details-content">
           <div class="tablewrap">
+            <div class="panel panel--info" style="margin-bottom: 20px;">
+              <div class="panel__title">📌 Intervalo: Saúde e Segurança (Não Negociável)</div>
 
+              <div class="grid2" style="align-items: flex-start; margin-top: 10px;">
 
-            <tr>
-              <div class="panel panel--info">
-                <div class="panel__title">📌 Intervalo NÃO é negociável.</div>
-                <div class="panel__text">
-                  O intervalo é um direito fundamental de saúde e segurança. A sua supressão é ilegal.</strong>
-                  <div class="micro-note">*A legislação não permite que o empregado “troque” o intervalo obrigatório
-                    (para
-                    jornadas acima de 4 horas) por uma saída antecipada, ainda que com concordância do trabalhador. Essa
-                    prática é ilegal e pode gerar passivo trabalhista.</div>
+                <div>
+                  <h3 style="font-size: 1rem; color: var(--brand); margin-bottom: 10px;">⚖️ O que diz a Lei (CLT Art.
+                    71)</h3>
+                  <div
+                    style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; border: 1px solid var(--border);">
+                    <ul class="check" style="padding-left: 0; list-style: none; margin: 0;">
+                      <li style="border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">
+                        <strong>Jornada > 6 horas:</strong><br>
+                        Mínimo <strong>1h</strong> e máximo <strong>2h</strong>.
+                        <div class="micro-note">
+                          *Pode ser 30min apenas se houver Acordo/Convenção Coletiva (Lei 13.467/2017).
+                          <td><strong>Jornada</strong> (Escala de Revezamento) <span class="cite-badge"
+                              data-pdf="acordo" data-page="16">ACT Cl. 14 §9</span></td>
+                          <br>
+                          <td><strong>❌ Observações Importantes</strong> (Intervalos) <span class="cite-badge"
+                              data-pdf="manual" data-page="9">Vedação</span></td>
+                        </div>
+                      </li>
+                      <li style="border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">
+                        <strong>Jornada 4 a 6 horas:</strong><br>
+                        Mínimo <strong>15 minutos</strong>.
+                      </li>
+                      <li>
+                        <strong>Interjornada (Entre dias):</strong><br>
+                        Mínimo de <strong>11 horas</strong> consecutivas (CLT Art. 66).
+                      </li>
+                    </ul>
+                  </div>
 
-                  <br>✅ Entenda que, <strong>Sua redução para no mínimo 30 minutos é permitida por negociação
-                    sindical.</strong> (Ex: Escalas de revezamento).
-                  <div class="micro-note">*O intervalo é considerado uma norma de saúde e segurança. Portanto, é nulo
-                    qualquer acordo que suprima o intervalo ou o reduza para menos de 30 minutos em jornadas superiores
-                    a
-                    6 horas.</div>
-
-
+                  <div class="alert alert--warn" style="margin-top: 16px;">
+                    <div class="alert__title">🚫 Mito: "Sair mais cedo"</div>
+                    <div class="alert__text">
+                      <strong>NÃO É PERMITIDO.</strong> Mesmo que o funcionário peça, a legislação proíbe trocar o
+                      intervalo pela saída antecipada.
+                      <br><small>Ex: Trabalhar direto para sair às 16:30h em vez de 17:30h é ilegal.</small>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </tr>
 
+                <div>
+                  <h3 style="font-size: 1rem; color: var(--danger); margin-bottom: 10px;">⚠️ Riscos e Penalidades</h3>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>1. Pagamento de Hora Extra (50%)</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      Se o intervalo for suprimido (mesmo que parcialmente), a empresa deve indenizar o tempo não gozado
+                      com acréscimo de 50%.
+                    </p>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>2. Multas Administrativas</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      Fiscalizações do MTE podem aplicar multas baseadas nos Art. 71 e 75 da CLT.
+                    </p>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>3. Passivo Trabalhista</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      A prática gera reflexos em Férias, 13º, FGTS e Aviso Prévio. Em ações trabalhistas, a condenação
+                      inclui custas e honorários.
+                    </p>
+                  </div>
+
+                  <div class="panel"
+                    style="background: rgba(253, 230, 138, 0.1); border-color: var(--warn); padding: 12px;">
+                    <strong style="color: var(--warn);">Conclusão:</strong>
+                    <div class="micro-note" style="margin-top: 4px; font-size: 0.85rem; color: var(--text);">
+                      Respeitar o intervalo protege a saúde do trabalhador e a sustentabilidade da empresa. <strong>Não
+                        gere passivos evitáveis.</strong>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
 
             <table>
               <thead>
@@ -246,7 +307,7 @@
                 <tr>
                   <td><span class="badge badge--purple">Administrativo (Banco)</span></td>
                   <td>8h Flexíveis</td>
-                  <td><strong>Mínimo 1h</strong> (Flexibilidade)
+                  <td><strong>Mínimo 1h</strong> e <strong>Máximo 2h</strong> (Flexibilidade)*
                     <span class="cite-badge" data-pdf="norma" data-page="5">Norma Art. 16</span>
                     <span class="cite-badge" data-pdf="manual" data-page="6">Manual pag. 6</span>
                     <span class="cite-badge" data-pdf="manual" data-page="8">Manual pag. 8</span>
@@ -266,10 +327,15 @@
               </tbody>
             </table>
           </div>
-        </article>
+        </div>
+      </details>
 
-        <article class="card">
+      <details class="card">
+        <summary>
           <h2>Situações Excepcionais</h2>
+        </summary>
+
+        <div class="details-content">
           <div class="tablewrap">
             <table>
               <thead>
@@ -303,31 +369,28 @@
                     <div class="micro-note">*¹Sem mudança de jornada, a ajuda de custo será a Administrativa.</div>
                   </td>
                 </tr>
-
-
-                <tr>
-                  <div class="panel panel--info">
-                    <div class="panel__title">📌 Gestor e Empregados devem zelar pelo cumprimento dos intervalos
-                      interjornada e intrajornada.</div>
-                    <div class="panel__text">
-                      Intercorrências podem acontecer, mas, uma boa gestão evita descumprimento de normativos.
-                      <strong>Os
-                        normativos garantem a saúde dos empregados e da empresa</strong>.
-                      <br><br>❌ Por isso, <strong>não é cabível alegar desconhecimento</strong> das regras aplicáveis.
-                    </div>
-                  </div>
-                </tr>
-
-
               </tbody>
             </table>
           </div>
-        </article>
-      </section>
 
-      <section class="card">
+          <div class="panel panel--info" style="margin-top: 20px;">
+            <div class="panel__title">📌 Gestor e Empregados devem zelar pelo cumprimento dos intervalos.</div>
+            <div class="panel__text">
+              Intercorrências podem acontecer, mas, uma boa gestão evita descumprimento de normativos.
+              <strong>Os normativos garantem a saúde dos empregados e da empresa</strong>.
+              <br><br>❌ Por isso, <strong>não é cabível alegar desconhecimento</strong> das regras aplicáveis.
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <details class="card">
+      <summary>
         <h2>Compensação de Banco de Horas</h2>
+      </summary>
 
+      <div class="details-content">
         <p>
           É a regularização do saldo em cumprimento à jornada padrão.
           <br>
@@ -338,7 +401,6 @@
         </p>
 
         <div class="grid2">
-
           <div class="panel panel--ok">
             <div class="panel__title">Saldo Positivo (+)</div>
             <div class="panel__text">
@@ -392,15 +454,18 @@
             </div>
           </div>
         </div>
+      </div>
+    </details>
 
-      </section>
+    <details id="fluxo" class="card">
+      <summary>
+        <h2>Fluxos de atuação</h2>
+      </summary>
 
-      <section class="card" id="fluxo">
-        <h2>Fluxos de atuação (Gestor • Empregado • Núcleo de Pessoal/RH)</h2>
+      <div class="details-content">
         <p class="muted">
           Fluxos resumidos para padronizar a atuação. Use como <strong>guia</strong> e valide sempre no documento
-          oficial
-          aplicável.
+          oficial aplicável.
         </p>
 
         <div class="tabs" role="tablist" aria-label="Fluxos por papel">
@@ -518,7 +583,7 @@
                   </div>
                 </div>
                 <ul class="check">
-                  <li>Se esquecer uma marcação, abrir ajuste até o dia útil seguinte (conforme manual).
+                  <li>Se esquecer uma marcação, abrir ajuste até o dia útil seguinte.
                     <span class="cite-badge" data-pdf="norma" data-page="7">Manual (Esqueci)</span>
                   </li>
                   <li>Comunicar o gestor imediato.</li>
@@ -550,7 +615,7 @@
                 </div>
                 <ul class="check">
                   <li>Não adulterar registros.</li>
-                  <li>Não descumprir intervalos, especialmente para menor que o planejado.
+                  <li>Não descumprir intervalos.
                     <span class="cite-badge" data-pdf="norma" data-page="4">Norma Pág. 4</span>
                   </li>
                 </ul>
@@ -570,7 +635,7 @@
                 </div>
                 <ul class="check">
                   <li>Sanar dúvidas com base nos documentos oficiais.</li>
-                  <li>Reforçar que o guia é informativo e o normativo é a referência.</li>
+                  <li>Reforçar que o guia é informativo.</li>
                 </ul>
               </div>
 
@@ -586,7 +651,7 @@
                   <li>Receber comunicação do gestor sobre ocorrências não previstas.
                     <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 5</span>
                   </li>
-                  <li>Orientar o encaminhamento correto (com evidências).</li>
+                  <li>Orientar o encaminhamento correto.</li>
                 </ul>
               </div>
 
@@ -599,7 +664,7 @@
                   </div>
                 </div>
                 <ul class="check">
-                  <li>Garantir trilha de auditoria de orientações e encaminhamentos.</li>
+                  <li>Garantir trilha de auditoria de orientações.</li>
                   <li>Atualizar comunicados internos quando houver mudanças.</li>
                 </ul>
               </div>
@@ -613,10 +678,8 @@
                   </div>
                 </div>
                 <ul class="check">
-                  <li>Encaminhar casos reincidentes conforme fluxo institucional (ex.: comissões/instâncias
-                    competentes).
-                  </li>
-                  <li>Orientar gestores sobre vedações (ex.: não inserir ponto para terceiros).
+                  <li>Encaminhar casos reincidentes conforme fluxo institucional.</li>
+                  <li>Orientar gestores sobre vedações.
                     <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 5</span>
                   </li>
                 </ul>
@@ -624,11 +687,16 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </details>
 
-      <section class="card" id="faq">
-        <div class="faq__head">
-          <h2>FAQ — Dúvidas Frequentes</h2>
+    <details id="faq" class="card">
+      <summary>
+        <h2>FAQ — Dúvidas Frequentes</h2>
+      </summary>
+
+      <div class="details-content">
+        <div class="faq__head" style="margin-top: 0;">
           <div class="faq__tools">
             <label class="search">
               <span class="search__icon">🔎</span>
@@ -641,20 +709,18 @@
           Dica: clique nos selos <span class="cite-badge" data-pdf="norma" data-page="4">📄</span> para abrir o ponto do
           documento.
         </div>
-      </section>
+      </div>
+    </details>
 
-      <footer class="footer">
-        <div class="muted">
-          <!-- Núcleo de Pessoal
-        <span class="sep">•</span> -->
-          Este site é um <strong>guia de consulta</strong> e <strong>não substitui</strong> os documentos oficiais.
-          <br>
-          Hagliberto Alves de Oliveira • Versão 1.9.1 • Janeiro de 2026
-        </div>
-      </footer>
+    <footer class="footer">
+      <div class="muted">
+        Este site é um <strong>guia de consulta</strong> e <strong>não substitui</strong> os documentos oficiais.
+        <br>
+        Hagliberto Alves de Oliveira • Versão 2.9.6 • Janeiro de 2026
+      </div>
+    </footer>
   </main>
 
-  <!-- Modal/Viewer robusto -->
   <div id="pdfModal" class="pdf-modal" aria-hidden="true">
     <div class="pdf-modal__content" id="pdfModalContent">
       <header class="pdf-header">
@@ -663,8 +729,7 @@
           <span class="pdf-page-indicator">Pág <span id="pdfPageNum">1</span></span>
         </div>
         <div class="pdf-controls">
-          <input type="text" id="pdfInternalSearch" placeholder="Buscar no índice do documento..."
-            class="pdf-search-input">
+          <input type="text" id="pdfInternalSearch" placeholder="Buscar no índice..." class="pdf-search-input">
           <button class="btn btn--sm" type="button" onclick="toggleViewerFullscreen()" title="Tela cheia">⛶</button>
           <button class="btn btn--sm" type="button" onclick="closePdfViewer()">❌ Fechar</button>
         </div>
@@ -693,6 +758,7 @@
   </div>
 
   <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 
 <div id="loginScreen" class="login-overlay">
