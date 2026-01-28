@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="pt-BR">
 
+<html lang="pt-BR" data-theme="light">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,6 +38,8 @@
       <div class="topbar__actions">
         <button class="btn btn--ghost" id="btnTheme" type="button" title="Alternar tema">🌗 Tema</button>
         <button class="btn btn--ghost" id="btnPrint" type="button" title="Imprimir">🖨️ Imprimir</button>
+        <button class="btn btn--ghost" id="btnLogout" type="button" title="Sair do sistema">🚪 Sair</button>
+      
       </div>
     </div>
   </header>
@@ -623,8 +627,8 @@
         <!-- Núcleo de Pessoal
         <span class="sep">•</span> -->
         Este site é um <strong>guia de consulta</strong> e <strong>não substitui</strong> os documentos oficiais.
-      <br>
-      Hagliberto Alves de Oliveira • Versão 1.9.1 • Janeiro de 2026
+        <br>
+        Hagliberto Alves de Oliveira • Versão 1.9.1 • Janeiro de 2026
       </div>
     </footer>
   </main>
@@ -669,5 +673,22 @@
 
   <script src="app.js"></script>
 </body>
+
+<div id="loginScreen" class="login-overlay">
+  <div class="card login-card">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+    <h2>Acesso Restrito</h2>
+    <p class="muted">Informe o PIN para acessar o Guia de Intervalos.</p>
+
+    <div class="login-form">
+      <input type="password" id="pinInput" class="pin-input" placeholder="Senha" maxlength="20" />
+      <button type="button" class="btn btn--lg" onclick="validatePin()">Entrar</button>
+    </div>
+
+    <div id="loginError" class="alert alert--warn hidden" style="margin-top: 15px; font-size: 0.9rem;">
+      🚫 PIN Incorreto. Tente novamente.
+    </div>
+  </div>
+</div>
 
 </html>
