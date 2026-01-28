@@ -216,17 +216,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setupTheme() {
   const btnTheme = document.getElementById("btnTheme");
-  const storedTheme = localStorage.getItem("theme");
-  if (storedTheme) document.documentElement.dataset.theme = storedTheme;
+  
+  // 1. Tenta pegar do armazenamento. Se não tiver, assume "light" como padrão
+  const storedTheme = localStorage.getItem("theme") || "light";
+  
+  // 2. Aplica o tema
+  document.documentElement.dataset.theme = storedTheme;
 
-  btnTheme.addEventListener("click", () => {
-    const current =
-      document.documentElement.dataset.theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = current;
-    localStorage.setItem("theme", current);
-  });
+  // 3. Configura o botão de troca
+  if (btnTheme) {
+    btnTheme.addEventListener("click", () => {
+      // Verifica qual é o atual para inverter
+      const current = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      
+      document.documentElement.dataset.theme = current;
+      localStorage.setItem("theme", current);
+    });
+  }
 
-  // print
+  // print (mantém como estava)
   const btnPrint = document.getElementById("btnPrint");
   if (btnPrint) btnPrint.addEventListener("click", () => window.print());
 }
@@ -460,3 +468,119 @@ function setupQuickPills() {
 function escapeRegExp(str) {
   return String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
+
+
+// ... código anterior ...
+
+/// =============================================================
+// 6. SISTEMA DE LOGIN (HASH SHA-256)
+// =============================================================
+// Hash gerado para o PIN "2026" (conforme sua imagem)
+// const EXPECTED_HASH = "deae5288bf132419396f858100443ecef135500a4bf6328d76162c38aacb68de"; 
+const EXPECTED_HASH = "158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab"; 
+const SESSION_KEY = "auth_gestao_intervalos";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Verifica se já está logado
+  if (sessionStorage.getItem(SESSION_KEY) === "true") {
+    unlockApp();
+  } else {
+    // Foca no input se não estiver logado
+    const pinInput = document.getElementById("pinInput");
+    if(pinInput) pinInput.focus();
+  }
+
+  // Permite apertar ENTER para entrar
+  const input = document.getElementById("pinInput");
+  if (input) {
+    input.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        validatePin();
+      }
+    });
+  }
+});
+
+// Função auxiliar para gerar o Hash SHA-256
+async function sha256(message) {
+  // Converte a string para um buffer de dados
+  const msgBuffer = new TextEncoder().encode(message);
+  // Gera o hash usando a API nativa do navegador
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  // Converte o buffer de volta para array de bytes
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  // Converte bytes para string Hexadecimal
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashHex;
+}
+
+// Transformamos a função em ASYNC porque a criptografia leva alguns milissegundos
+window.validatePin = async function() {
+  const input = document.getElementById("pinInput");
+  const errorMsg = document.getElementById("loginError");
+  const enteredPin = input.value;
+
+  // Gera o hash do que o usuário digitou
+  const enteredHash = await sha256(enteredPin);
+
+  if (enteredHash === EXPECTED_HASH) {
+    // Hash bateu! (Senha correta)
+    sessionStorage.setItem(SESSION_KEY, "true");
+    unlockApp();
+  } else {
+    // Senha incorreta
+    errorMsg.classList.remove("hidden");
+    input.value = "";
+    input.focus();
+    
+    // Efeito visual de tremor
+    const card = document.querySelector(".login-card");
+    if(card) {
+        card.style.transform = "translateX(10px)";
+        setTimeout(() => card.style.transform = "translateX(-10px)", 100);
+        setTimeout(() => card.style.transform = "none", 200);
+    }
+  }
+};
+
+function unlockApp() {
+  const screen = document.getElementById("loginScreen");
+  if (screen) {
+    screen.style.opacity = "0";
+    setTimeout(() => {
+      screen.classList.add("hidden");
+    }, 300);
+  }
+}
+
+// ... código anterior dentro do DOMContentLoaded ...
+
+  // Lógica do Botão de Sair (Logout)
+  const btnLogout = document.getElementById("btnLogout");
+  if (btnLogout) {
+    btnLogout.addEventListener("click", () => {
+      // 1. Remove a permissão da sessão
+      sessionStorage.removeItem(SESSION_KEY);
+      
+      // 2. Traz a tela de bloqueio de volta
+      const screen = document.getElementById("loginScreen");
+      const input = document.getElementById("pinInput");
+      
+      if (screen) {
+        screen.classList.remove("hidden");
+        // Pequeno delay para permitir que o navegador renderize o display:flex antes da opacidade
+        setTimeout(() => {
+            screen.style.opacity = "1";
+        }, 10);
+      }
+      
+      // 3. Limpa o campo de senha
+      if (input) {
+        input.value = "";
+        input.focus();
+      }
+
+      // Opcional: Se quiser fechar modais ou limpar a tela ao sair, descomente a linha abaixo:
+      // window.location.reload(); 
+    });
+  }
