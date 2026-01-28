@@ -60,7 +60,7 @@ let currentDoc = null;
 let currentPage = 1;
 
 // Hash SHA-256 para a senha "2026"
-const EXPECTED_HASH = "deae5288bf132419396f858100443ecef135500a4bf6328d76162c38aacb68de";
+const EXPECTED_HASH = "ebd72b510911af3e254a030cd891cb804e1902189eee7a0f6199472eb5e4dba2";
 const SESSION_KEY = "auth_gestao_intervalos";
 
 // =============================================================
