@@ -1,5 +1,5 @@
 // 1. IMPORTAÇÃO DOS DADOS
-import { faqItems } from './faq-data.js';
+import { faqItems } from "./faq-data.js";
 
 // =============================================================
 // CONFIGURAÇÃO DOS DOCUMENTOS PDF
@@ -60,7 +60,8 @@ let currentDoc = null;
 let currentPage = 1;
 
 // Hash SHA-256 para a senha "2026"
-const EXPECTED_HASH = "ebd72b510911af3e254a030cd891cb804e1902189eee7a0f6199472eb5e4dba2";
+const EXPECTED_HASH =
+  "ebd72b510911af3e254a030cd891cb804e1902189eee7a0f6199472eb5e4dba2";
 const SESSION_KEY = "auth_gestao_intervalos";
 
 // =============================================================
@@ -79,13 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
     // Procura se o clique foi num badge ou dentro dele
     const badge = e.target.closest(".cite-badge");
-    
+
     if (badge) {
       e.preventDefault();
       e.stopPropagation();
       const docId = badge.dataset.pdf;
       const page = badge.dataset.page;
-      
+
       // Chama o visualizador se tiver os dados
       if (docId && page) {
         openPdfViewer(docId, page);
@@ -94,7 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 2. Lógica de Login na inicialização
-  if (sessionStorage.getItem(SESSION_KEY) === "true") {
+  const isLogged =
+    sessionStorage.getItem(SESSION_KEY) === "true" ||
+    localStorage.getItem(SESSION_KEY) === "true";
+
+  if (isLogged) {
+    // garante sessão nesta aba
+    sessionStorage.setItem(SESSION_KEY, "true");
     unlockApp();
   } else {
     const pinInput = document.getElementById("pinInput");
@@ -116,13 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnLogout) {
     btnLogout.addEventListener("click", () => {
       sessionStorage.removeItem(SESSION_KEY);
-      
+      localStorage.removeItem(SESSION_KEY);
+
       const screen = document.getElementById("loginScreen");
       const input = document.getElementById("pinInput");
-      
+
       if (screen) {
         screen.classList.remove("hidden");
-        setTimeout(() => { screen.style.opacity = "1"; }, 10);
+        setTimeout(() => {
+          screen.style.opacity = "1";
+        }, 10);
       }
       if (input) {
         input.value = "";
@@ -143,7 +153,8 @@ function setupTheme() {
 
   if (btnTheme) {
     btnTheme.addEventListener("click", () => {
-      const current = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      const current =
+        document.documentElement.dataset.theme === "light" ? "dark" : "light";
       document.documentElement.dataset.theme = current;
       localStorage.setItem("theme", current);
     });
@@ -164,33 +175,44 @@ function setupTabs() {
       t.setAttribute("aria-selected", isActive ? "true" : "false");
     });
     panels.forEach((p) =>
-      p.classList.toggle("active", p.dataset.panel === tabId)
+      p.classList.toggle("active", p.dataset.panel === tabId),
     );
   }
-  tabs.forEach((t) => t.addEventListener("click", () => activate(t.dataset.tab)));
+  tabs.forEach((t) =>
+    t.addEventListener("click", () => activate(t.dataset.tab)),
+  );
 }
 
 function renderFAQ(items) {
   const container = document.getElementById("faqList");
   if (!container) return;
-  container.innerHTML = items.map((it) => `
+  container.innerHTML = items
+    .map(
+      (it) => `
       <div class="acc" data-open="false">
         <button class="acc__btn" type="button" onclick="this.parentElement.dataset.open = this.parentElement.dataset.open === 'true' ? 'false' : 'true'">
           ${it.q} <span>▾</span>
         </button>
         <div class="acc__panel">${it.a}</div>
       </div>
-    `).join("");
+    `,
+    )
+    .join("");
 }
 
 function setupSearch() {
   const input = document.getElementById("faqSearch");
   if (!input) return;
   input.addEventListener("input", (e) => {
-    const term = String(e.target.value || "").toLowerCase().trim();
+    const term = String(e.target.value || "")
+      .toLowerCase()
+      .trim();
     if (!term) return renderFAQ(faqItems);
     const filtered = faqItems.filter(
-      (it) => it.q.toLowerCase().includes(term) || it.a.toLowerCase().includes(term) || (it.tags || []).some((t) => t.includes(term))
+      (it) =>
+        it.q.toLowerCase().includes(term) ||
+        it.a.toLowerCase().includes(term) ||
+        (it.tags || []).some((t) => t.includes(term)),
     );
     renderFAQ(filtered);
   });
@@ -230,7 +252,9 @@ window.openPdfViewer = function (docId, page = null) {
 
   const filePath = `assets/${encodeURIComponent(data.filename)}`;
   frame.src = "";
-  setTimeout(() => { frame.src = filePath + `#page=${currentPage}`; }, 30);
+  setTimeout(() => {
+    frame.src = filePath + `#page=${currentPage}`;
+  }, 30);
   renderSidebar(docId);
 };
 
@@ -252,18 +276,24 @@ function renderSidebar(docId) {
     list.innerHTML = `<div class="empty-state">Índice indisponível.</div>`;
     return;
   }
-  const sortedPages = Object.keys(pages).sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
-  list.innerHTML = sortedPages.map((pageNum) => `
+  const sortedPages = Object.keys(pages).sort(
+    (a, b) => Number.parseInt(a, 10) - Number.parseInt(b, 10),
+  );
+  list.innerHTML = sortedPages
+    .map(
+      (pageNum) => `
         <div class="sidebar-item" role="button" tabindex="0" onclick="forcePageNav(${pageNum})">
           <strong>Página ${pageNum}</strong>
           <div style="font-size:0.8em; line-height:1.35; margin-top:4px; opacity:0.85; color: var(--text);">
             ${pages[pageNum]}
           </div>
         </div>
-      `).join("");
+      `,
+    )
+    .join("");
 }
 
-window.forcePageNav = function (pageNum) {
+globalThis.forcePageNav = function (pageNum) {
   const frame = document.getElementById("realPdfFrame");
   const base = frame.src.split("#")[0];
   currentPage = Number(pageNum) || 1;
@@ -271,18 +301,18 @@ window.forcePageNav = function (pageNum) {
   document.getElementById("pdfPageNum").innerText = String(currentPage);
 };
 
-window.changePage = function (delta) {
+globalThis.changePage = function (delta) {
   if (!currentDoc) return;
   const next = Math.max(1, (Number(currentPage) || 1) + Number(delta || 0));
   forcePageNav(next);
 };
 
-window.toggleViewerFullscreen = function () {
+globalThis.toggleViewerFullscreen = function () {
   const el = document.getElementById("pdfModalContent");
-  if (!document.fullscreenElement) {
-    el.requestFullscreen?.().catch(() => {});
-  } else {
+  if (document.fullscreenElement) {
     document.exitFullscreen?.().catch(() => {});
+  } else {
+    el.requestFullscreen?.().catch(() => {});
   }
 };
 
@@ -290,29 +320,42 @@ function setupPdfModalUX() {
   const modal = document.getElementById("pdfModal");
   const input = document.getElementById("pdfInternalSearch");
 
-  modal.addEventListener("click", (e) => { if (e.target === modal) closePdfViewer(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("active")) closePdfViewer(); });
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closePdfViewer();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active"))
+      closePdfViewer();
+  });
 
   input.addEventListener("input", (e) => {
-    const term = String(e.target.value || "").toLowerCase().trim();
+    const term = String(e.target.value || "")
+      .toLowerCase()
+      .trim();
     const list = document.getElementById("pdfSearchResults");
     const pages = pdfData[currentDoc]?.pages || {};
     if (!term) return renderSidebar(currentDoc);
-    
-    const results = Object.entries(pages).filter(([_, t]) => String(t).toLowerCase().includes(term));
+
+    const results = Object.entries(pages).filter(([_, t]) =>
+      String(t).toLowerCase().includes(term),
+    );
     if (results.length === 0) {
       list.innerHTML = `<div class="empty-state">Sem resultados.</div>`;
       return;
     }
-    list.innerHTML = results.map(([pageNum, text]) => {
-        const snippet = String(text).replace(new RegExp(`(${escapeRegExp(term)})`, "gi"), 
-          '<mark style="background:var(--brand); color:black;">$1</mark>');
+    list.innerHTML = results
+      .map(([pageNum, text]) => {
+        const snippet = String(text).replaceAll(
+          new RegExp(`(${escapeRegExp(term)})`, "gi"),
+          '<mark style="background:var(--brand); color:black;">$1</mark>',
+        );
         return `
           <div class="sidebar-item" role="button" tabindex="0" onclick="forcePageNav(${pageNum})">
             <strong>Página ${pageNum}</strong>
             <div style="font-size:0.8em; line-height:1.35; margin-top:4px; opacity:0.9;">${snippet}</div>
           </div>`;
-      }).join("");
+      })
+      .join("");
   });
 
   document.addEventListener("keydown", (e) => {
@@ -325,7 +368,7 @@ function setupPdfModalUX() {
 }
 
 function escapeRegExp(str) {
-  return String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return String(str).replaceAll(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 // =============================================================
@@ -340,7 +383,7 @@ async function sha256(message) {
 }
 
 // EXPOSIÇÃO GLOBAL DA FUNÇÃO DE LOGIN
-window.validatePin = async function () {
+globalThis.validatePin = async function () {
   const input = document.getElementById("pinInput");
   const errorMsg = document.getElementById("loginError");
   const enteredPin = input.value;
@@ -350,7 +393,16 @@ window.validatePin = async function () {
     // Compara ignorando maiúsculas/minúsculas
     if (enteredHash.toLowerCase() === EXPECTED_HASH.toLowerCase()) {
       sessionStorage.setItem(SESSION_KEY, "true");
-      unlockApp();
+      localStorage.setItem(SESSION_KEY, "true");
+
+      const params = new URLSearchParams(globalThis.location.search);
+      const redirect = params.get("redirect");
+
+      if (redirect) {
+        globalThis.location.href = redirect;
+      } else {
+        unlockApp();
+      }
     } else {
       throw new Error("Senha incorreta");
     }
@@ -372,6 +424,8 @@ function unlockApp() {
   const screen = document.getElementById("loginScreen");
   if (screen) {
     screen.style.opacity = "0";
-    setTimeout(() => { screen.classList.add("hidden"); }, 300);
+    setTimeout(() => {
+      screen.classList.add("hidden");
+    }, 300);
   }
 }
