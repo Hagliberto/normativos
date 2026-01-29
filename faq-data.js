@@ -7,7 +7,7 @@ export const faqItems = [
   // Banco de horas / compensação
   {
     q: "Qual o prazo para compensar Banco de Horas?",
-    a: "Saldo positivo: até 6 meses. Saldo negativo: até o mês seguinte. <span class='cite-badge' data-pdf='manual' data-page='12'>Manual Pág. 12</span>",
+    a: "Saldo positivo: até 6 meses. Saldo negativo: até o mês seguinte. <span class='cite-badge' data-pdf='manual' data-page='13'>Manual Pág. 13</span>",
     tags: ["banco", "prazo", "compensação", "saldo"],
   },
   {
@@ -17,7 +17,7 @@ export const faqItems = [
   },
   {
     q: "Saldo negativo pode acumular por vários meses?",
-    a: "Não é o recomendado: a regra é compensar até o mês seguinte à ocorrência. <span class='cite-badge' data-pdf='manual' data-page='12'>Manual Pág. 12</span>",
+    a: "Não é o recomendado: a regra é compensar até o mês seguinte à ocorrência. <span class='cite-badge' data-pdf='manual' data-page='12'>Manual Págs. 12/13</span>",
     tags: ["saldo", "negativo", "prazo"],
   },
   {
@@ -29,12 +29,12 @@ export const faqItems = [
   // Intervalos (intra / inter)
   {
     q: "Qual é a regra geral da interjornada?",
-    a: "Em regra, deve haver descanso mínimo de 11h entre jornadas. <span class='cite-badge' data-pdf='norma' data-page='3'>Norma Pág. 3</span>",
+    a: "Em regra, deve haver descanso mínimo de 11h entre jornadas. <span class='cite-badge' data-pdf='norma' data-page='3'>Norma Pág. 3 Art. 4º</span>",
     tags: ["interjornada", "11h", "descanso"],
   },
   {
     q: "Qual é a regra geral da intrajornada em jornada administrativa?",
-    a: "Em regra, o intervalo intrajornada deve ser de 1h a 2h, conforme previsto no normativo aplicável. <span class='cite-badge' data-pdf='norma' data-page='3'>Norma Pág. 3</span>",
+    a: "Em regra, o intervalo intrajornada deve ser de 1h a 2h, conforme previsto no normativo aplicável. <span class='cite-badge' data-pdf='norma' data-page='3'>Norma Pág. 3 Art. 4º</span>",
     tags: ["intrajornada", "almoço", "intervalo"],
   },
   {
@@ -102,7 +102,7 @@ export const faqItems = [
   // Responsabilidades e “desconhecimento”
   {
     q: "Os normativos são acessíveis a todos os empregados?",
-    a: "Sim. Estão disponíveis na intranet/SEI/portal e também podem ser solicitados ao gestor ou ao Núcleo de Pessoal/RH. Por isso, não é cabível alegar desconhecimento das regras.",
+    a: "Sim. Estão disponíveis na intranet/SEI/Sindicato e também podem ser solicitados ao gestor ou ao Núcleo de Pessoal/RH. Por isso, não é cabível alegar desconhecimento das regras.",
     tags: ["normativo", "intranet", "desconhecimento"],
   },
   {
@@ -196,7 +196,7 @@ export const faqItems = [
   },
   {
     q: "Onde encontro o ACT e a cartilha?",
-    a: "Na intranet/portal do colaborador e também via RH/Sindicato (conforme divulgado).",
+    a: "Na intranet/Sindicato e também via RH/Sindicato (conforme divulgado).",
     tags: ["act", "cartilha", "onde"],
   },
   {
@@ -459,7 +459,7 @@ export const faqItems = [
   // =============================================================
   {
     q: "Qual o prazo para compensar Banco de Horas?",
-    a: "Saldo positivo: até 6 meses. Saldo negativo: até o mês seguinte. <span class='cite-badge' data-pdf='manual' data-page='12'>Manual Pág. 12</span>",
+    a: "Saldo positivo: até 6 meses. Saldo negativo: até o mês seguinte. <span class='cite-badge' data-pdf='manual' data-page='13'>Manual Pág. 13</span>",
     tags: ["banco", "prazo", "compensação", "saldo"],
   },
   {

@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="bh_tolerancia/modal/bh_modal.css" />
+
 </head>
 
 <body>
@@ -121,7 +123,21 @@
       </summary>
 
       <div class="details-content">
+
+
+
+
+
         <div class="grid4">
+
+          <a href="leitor-norma/index.html" class="doc-link doc-link--anchor" style="border-color: var(--brand);">
+            <div class="doc-icon">💻</div>
+            <strong>Leitor Digital da Norma</strong>
+            <span>Texto pesquisável</span>
+            <small>Acesse o texto integral, organizado e pesquisável</small>
+          </a>
+
+
           <button type="button" class="doc-link" onclick="openPdfViewer('norma')">
             <div class="doc-icon">📜</div>
             <strong>Norma de Jornada</strong>
@@ -396,7 +412,7 @@
           <br>
           <small>
             <strong>Aplica-se a:</strong> Empregados no "Grupo de Regra Banco de Horas".
-            <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13</span>
+            <span class="cite-badge" data-pdf="manual" data-page="14">Pág. 14 - Manual</span>
           </small>
         </p>
 
@@ -409,7 +425,7 @@
               <p class="text-warning">
                 ⚠ Exige acordo prévio com a chefia. Não é permitida "compensação em aberto" (falta sem aviso).
               </p>
-              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13</span>
+              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13 - Manual</span>
             </div>
           </div>
 
@@ -421,7 +437,7 @@
               <p class="text-warning">
                 ⚠ Deve ser previamente autorizada pela chefia imediata.
               </p>
-              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13</span>
+              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13 - Manual</span>
             </div>
           </div>
         </div>
@@ -447,6 +463,20 @@
               <strong>⚠ Atenção:</strong> A utilização contínua dos <strong>15 min de tolerância</strong>
               (entrada/saída)
               para gerar horas extras é <strong>indevida</strong> e passível de apuração de conduta.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 7 - Art.29</span>
+            </div>
+
+            <div class="bh-cta">
+              <div class="bh-cta__text">
+                <b>⚖️ Tolerância de 15 min: quando é permitido e quando vira indevido</b>
+                <div class="bh-cta__muted">
+                  Explicação prática e jurídica (com exemplos).
+                </div>
+              </div>
+
+              <button type="button" class="bh-btn bh-btn--primary" data-bh-open>
+                Explicação
+              </button>
             </div>
 
             <div style="text-align: right; margin-top: 5px;">
@@ -617,6 +647,7 @@
                   <li>Não adulterar registros.</li>
                   <li>Não descumprir intervalos.
                     <span class="cite-badge" data-pdf="norma" data-page="4">Norma Pág. 4</span>
+                    <span class="cite-badge" data-pdf="norma" data-page="11">Norma Pág. 11</span>
                   </li>
                 </ul>
               </div>
@@ -721,6 +752,27 @@
     </footer>
   </main>
 
+  <div id="bhInfoModal" class="bh-modal" aria-hidden="true">
+    <dialog class="bh-modal__panel" id="bhInfoPanel" aria-label="Tolerância de 15 minutos">
+      <header class="bh-modal__header">
+        <div class="bh-modal__title">
+          <span>📌 Tolerância de 15 min</span>
+          <span class="bh-chip">Banco de Horas</span>
+        </div>
+
+        <div class="bh-modal__actions">
+          <button type="button" class="bh-btn" data-bh-open-page>Abrir em página</button>
+          <button type="button" class="bh-btn" data-bh-close>Fechar</button>
+        </div>
+      </header>
+
+      <div class="bh-modal__body">
+        <iframe id="bhInfoFrame" class="bh-modal__iframe" data-src="bh_tolerancia/index.html" src="about:blank"
+          title="Explicação sobre tolerância de 15 minutos" loading="lazy"></iframe>
+      </div>
+  </div>
+  </div>
+
   <div id="pdfModal" class="pdf-modal" aria-hidden="true">
     <div class="pdf-modal__content" id="pdfModalContent">
       <header class="pdf-header">
@@ -757,8 +809,10 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
   <script type="module" src="app.js"></script>
+  <script defer src="bh_tolerancia/modal/bh_modal.js"></script>
+
 </body>
 
 <div id="loginScreen" class="login-overlay">
