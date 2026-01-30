@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Jornada, Intervalo e Tolerância</title>
+  <style>
+    :root{ color-scheme: light; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:#f6f7fb;
+      color:#111827;
+    }
+    .wrap{ max-width: 980px; margin:0 auto; padding: 16px; }
+    .card{
+      background:#fff;
+      border:1px solid rgba(17,24,39,.10);
+      border-radius:16px;
+      padding:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    h1{ margin:0 0 6px; font-size:20px; line-height:1.2; }
+    .sub{ margin:0 0 14px; color:rgba(17,24,39,.72); font-size:13px; }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin: 12px 0 10px; }
+    .search{ flex: 1 1 320px; min-width: 240px; }
+    input[type="search"]{
+      width:100%;
+      border:1px solid rgba(17,24,39,.14);
+      border-radius: 12px;
+      padding:10px 12px;
+      outline:none;
+      font-size: 14px;
+      background:#fff;
+    }
+
+    /* Pills (filtros) */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,.14);
+      background:#fff;
+      cursor:pointer;
+      user-select:none;
+      font-size:13px;
+      color:#111827;
+      transition: background .15s ease, border-color .15s ease, transform .05s ease;
+    }
+    .pill:active{ transform: translateY(1px); }
+    .pill input{ position:absolute; opacity:0; pointer-events:none; width:1px; height:1px; }
+    .pill .dot{
+      width:10px; height:10px; border-radius:999px;
+      border:2px solid rgba(17,24,39,.35);
+      background:transparent;
+      transition: background .15s ease, border-color .15s ease;
+    }
+    .pill.is-on{
+      border-color: rgba(0,112,243,.45);
+      background: rgba(0,112,243,.08);
+    }
+    .pill.is-on .dot{
+      border-color: rgba(0,112,243,.85);
+      background: rgba(0,112,243,.85);
+    }
+
+    /* Lista */
+    details{
+      border:1px solid rgba(17,24,39,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background:#fff;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .q{ font-weight: 650; font-size: 14px; line-height:1.35; }
+    .tag{
+      margin-left:auto;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,.12);
+      background: rgba(17,24,39,.03);
+      color: rgba(17,24,39,.75);
+      white-space:nowrap;
+    }
+    .a{ margin:10px 0 0; font-size: 13.5px; color: rgba(17,24,39,.90); line-height:1.55; }
+    .refs{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+
+    /* Pills de referência (clicáveis) */
+    .ref-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,.14);
+      background:#fff;
+      font-size:12px;
+      color:#111827;
+      text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .05s ease;
+    }
+    .ref-pill:hover{
+      border-color: rgba(0,112,243,.45);
+      background: rgba(0,112,243,.06);
+    }
+    .ref-pill:active{ transform: translateY(1px); }
+    .ref-pill .ico{ opacity:.75; }
+    .empty{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(17,24,39,.22);
+      color: rgba(17,24,39,.70);
+      background: rgba(17,24,39,.02);
+      font-size: 13px;
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>FAQ — Jornada, Intervalo e Tolerância</h1>
+      <p class="sub">Busca + filtros • cada item traz a base legal em “pills” clicáveis que abrem o PDF na página indicada.</p>
+
+      <div class="controls">
+        <div class="search">
+          <input id="q" type="search" placeholder="Buscar: tolerância, intervalo, jornada, ponto, gestor..." />
+        </div>
+
+        <label class="pill" data-pill>
+          <span class="dot" aria-hidden="true"></span>
+          <input type="checkbox" id="fJornada" checked />
+          Jornada
+        </label>
+
+        <label class="pill" data-pill>
+          <span class="dot" aria-hidden="true"></span>
+          <input type="checkbox" id="fIntervalo" checked />
+          Intervalo
+        </label>
+
+        <label class="pill" data-pill>
+          <span class="dot" aria-hidden="true"></span>
+          <input type="checkbox" id="fTolerancia" checked />
+          Tolerância
+        </label>
+
+        <label class="pill" data-pill>
+          <span class="dot" aria-hidden="true"></span>
+          <input type="checkbox" id="fPonto" checked />
+          Registro/Ponto
+        </label>
+
+        <label class="pill" data-pill>
+          <span class="dot" aria-hidden="true"></span>
+          <input type="checkbox" id="fConduta" checked />
+          Conduta
+        </label>
+      </div>
+
+      <div id="list"></div>
+      <div id="empty" class="empty">Nenhum item encontrado com os filtros atuais.</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { faqItems } from "../faq-data.js";
+
+    const q = document.getElementById("q");
+    const list = document.getElementById("list");
+    const empty = document.getElementById("empty");
+
+    const filters = {
+      jornada: document.getElementById("fJornada"),
+      intervalo: document.getElementById("fIntervalo"),
+      tolerancia: document.getElementById("fTolerancia"),
+      ponto: document.getElementById("fPonto"),
+      conduta: document.getElementById("fConduta"),
+    };
+
+    // Mapeia o "data-pdf" -> arquivo real dentro de /assets
+    const pdfFiles = {
+      norma: "../assets/Norma.pdf",
+      manual: "../assets/Manual.pdf",
+      acordo: "../assets/Acordo.pdf",
+      cartilha: "../assets/Cartilha.pdf",
+      clt: null,
+    };
+
+    function norm(s){
+      return (s||"").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu,"");
+    }
+
+    function guessCategory(item){
+      const tags = (item.tags||[]).map(t => norm(t));
+      const text = norm(item.q + " " + item.a);
+
+      const has = (w) => tags.includes(w) || text.includes(w);
+
+      if (has("tolerancia") || has("tolerância")) return "tolerancia";
+      if (has("intervalo") || has("intrajornada") || has("interjornada")) return "intervalo";
+      if (has("ponto") || has("registro") || has("frequencia") || has("frequência")) return "ponto";
+      if (has("conduta") || has("responsabilizacao") || has("responsabilização") || has("etica") || has("ética")) return "conduta";
+      return "jornada";
+    }
+
+    function catLabel(cat){
+      return ({
+        jornada: "Jornada",
+        intervalo: "Intervalo",
+        tolerancia: "Tolerância",
+        ponto: "Registro/Ponto",
+        conduta: "Conduta",
+      })[cat] || "Jornada";
+    }
+
+    // Extrai <span class='cite-badge' data-pdf='...' data-page='...'>...</span> do HTML do item
+    function extractCites(html){
+      const tmp = document.createElement("div");
+      tmp.innerHTML = html || "";
+      const cites = [...tmp.querySelectorAll(".cite-badge")].map(el => ({
+        pdf: el.getAttribute("data-pdf"),
+        page: el.getAttribute("data-page"),
+        label: (el.textContent || "").trim(),
+      }));
+      // Remove as badges do corpo da resposta (vamos renderizar como pills separadas)
+      tmp.querySelectorAll(".cite-badge").forEach(el => el.remove());
+      return { cleanHtml: tmp.innerHTML.trim(), cites };
+    }
+
+    function makeRefPill({pdf, page, label}){
+      const hrefBase = pdfFiles[pdf];
+      const pageNum = String(page || "").replace(/\D+/g,"");
+      if (!hrefBase || !pageNum){
+        // fallback (ex.: CLT) -> só mostra texto sem link
+        const span = document.createElement("span");
+        span.className = "ref-pill";
+        span.innerHTML = "<span class='ico'>📌</span>" + (label || "Referência");
+        return span;
+      }
+      const a = document.createElement("a");
+      a.className = "ref-pill";
+      a.href = hrefBase + "#page=" + pageNum;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.innerHTML = "<span class='ico'>📄</span>" + (label || (pdf + " pág. " + pageNum));
+      return a;
+    }
+
+    function render(){
+      list.innerHTML = "";
+      const items = faqItems.map(it => {
+        const cat = it.cat || guessCategory(it);
+        const { cleanHtml, cites } = extractCites(it.a);
+        return { ...it, cat, cleanHtml, cites };
+      });
+
+      items.forEach(it => {
+        const d = document.createElement("details");
+        d.setAttribute("data-cat", it.cat);
+
+        const s = document.createElement("summary");
+        const qSpan = document.createElement("span");
+        qSpan.className = "q";
+        qSpan.textContent = it.q;
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = catLabel(it.cat);
+
+        s.appendChild(qSpan);
+        s.appendChild(tag);
+
+        const a = document.createElement("div");
+        a.className = "a";
+        a.innerHTML = it.cleanHtml || "";
+
+        const refs = document.createElement("div");
+        refs.className = "refs";
+        (it.cites||[]).forEach(c => refs.appendChild(makeRefPill(c)));
+
+        d.appendChild(s);
+        d.appendChild(a);
+        if ((it.cites||[]).length) d.appendChild(refs);
+
+        list.appendChild(d);
+      });
+    }
+
+    function apply(){
+      const term = norm(q.value.trim());
+      let shown = 0;
+
+      [...list.querySelectorAll("details")].forEach(d => {
+        const cat = d.getAttribute("data-cat");
+        const okCat = filters[cat] ? filters[cat].checked : true;
+        const text = norm(d.innerText);
+        const okTerm = !term || text.includes(term);
+        const show = okCat && okTerm;
+        d.style.display = show ? "" : "none";
+        if (show) shown++;
+        if (!show) d.removeAttribute("open");
+      });
+
+      empty.style.display = shown ? "none" : "block";
+    }
+
+    // Pills: transforma checkbox em aparência de "toggle pill"
+    function syncPills(){
+      document.querySelectorAll("[data-pill]").forEach(lbl => {
+        const cb = lbl.querySelector("input[type='checkbox']");
+        if (!cb) return;
+        lbl.classList.toggle("is-on", !!cb.checked);
+      });
+    }
+
+    q.addEventListener("input", apply);
+    Object.values(filters).forEach(cb => cb.addEventListener("change", ()=>{ syncPills(); apply(); }));
+
+    render();
+    syncPills();
+    apply();
+  </script>
+</body>
+</html>

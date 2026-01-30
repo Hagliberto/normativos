@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitor da Norma - Gestão de Intervalos</title>
+  <script src="../auth/guard.js"></script>
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="ghost-nav">
+    <a href="../index.html" class="btn-back-discrete">⬅ Voltar</a>
+
+    <div class="view-toggle-wrapper discrete-toggle">
+      <span class="toggle-label">1 Col</span>
+      <label class="switch" for="viewToggle">
+        <input type="checkbox" id="viewToggle">
+        <span class="slider round"></span>
+      </label>
+      <span class="toggle-label">2 Cols</span>
+    </div>
+  </div>
+
+  <main class="container container--fluid">
+
+    <section class="search-section">
+      <div class="card hero__card">
+        <h2 style="text-align: center; margin-bottom: 10px; font-size: 1.2rem; border:none;">Leitor Digital da Norma
+        </h2>
+
+        <div class="search-box-wrapper">
+          <input type="text" id="inputBusca" class="big-search" placeholder="Pesquisar termo...">
+          <div class="search-icon">🔍</div>
+        </div>
+
+        <div class="quick-pills center-pills" id="tagsSugestao">
+          <button class="pill pill--action tooltip" data-art="Art. 1º" data-desc="Definições e conceitos gerais."
+            onclick="buscarTermo('definições')">Definições</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º" data-desc="Limite de 8h diárias."
+            onclick="buscarTermo('duração normal')">Jornada 8h</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-I"
+            data-desc="Regime administrativo de 40h semanais." onclick="buscarTermo('administrativo')">Adm. 40h</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-II" data-desc="Regimes 12x36 e 24x72."
+            onclick="buscarTermo('escala de revezamento')">Escalas</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-III"
+            data-desc="Jornada específica de Médicos (4h)." onclick="buscarTermo('médicos')">Médicos</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-IV"
+            data-desc="Jornada de Jornalistas e Assistentes Sociais."
+            onclick="buscarTermo('jornalistas')">Jornalistas</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-V" data-desc="Jornada de Advogados."
+            onclick="buscarTermo('advogados')">Advogados</button>
+          <button class="pill pill--action tooltip" data-art="Art. 2º-§2"
+            data-desc="Tolerância de 5 min por batida / 10 min dia."
+            onclick="buscarTermo('tolerância')">Tolerância</button>
+
+          <button class="pill pill--action tooltip" data-art="Art. 3º-I"
+            data-desc="Intervalo para jornada acima de 6h (1h a 2h)." onclick="buscarTermo('intervalo')">Almoço
+            >6h</button>
+          <button class="pill pill--action tooltip" data-art="Art. 3º-II"
+            data-desc="Intervalo de 15min para jornada de 4h a 6h." onclick="buscarTermo('15 minutos')">Intervalo
+            15min</button>
+          <button class="pill pill--action tooltip" data-art="Art. 4º" data-desc="Descanso mínimo de 11h entre dias."
+            onclick="buscarTermo('interjornada')">Interjornada</button>
+          <button class="pill pill--action tooltip" data-art="Art. 5º" data-desc="Deslocamento e tempo residual."
+            onclick="buscarTermo('deslocamento')">Trajeto</button>
+
+          <button class="pill pill--action tooltip" data-art="Art. 6º" data-desc="Obrigatoriedade do registro diário."
+            onclick="buscarTermo('registro de frequência')">Registro Obrigatório</button>
+          <button class="pill pill--action tooltip" data-art="Art. 7º" data-desc="Qtd de batidas (2, 4 ou 6) por dia."
+            onclick="buscarTermo('vezes por dia')">Qtd Marcações</button>
+          <button class="pill pill--action tooltip" data-art="Art. 8º" data-desc="Sistemas eletrônicos e manuais."
+            onclick="buscarTermo('modalidades')">Ponto Eletrônico</button>
+
+          <button class="pill pill--action tooltip" data-art="Art. 9º"
+            data-desc="Lista geral de ausências justificadas." onclick="buscarTermo('ausências justificadas')">Ausências
+            Legais</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-V" data-desc="Acompanhamento médico e doença."
+            onclick="buscarTermo('assistência médica')">Atestado/Doença</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-VI" data-desc="Ausência de interesse pessoal."
+            onclick="buscarTermo('interesse pessoal')">Interesse Pessoal</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-XII" data-desc="Doação voluntária de sangue."
+            onclick="buscarTermo('doação de sangue')">Doação Sangue</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-XV" data-desc="Frequência em aulas e cursos."
+            onclick="buscarTermo('frequência aula')">Estudante</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-XVII" data-desc="Licença maternidade e adoção."
+            onclick="buscarTermo('maternidade')">Maternidade</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-XIX" data-desc="Licença falecimento (nojo)."
+            onclick="buscarTermo('falecimento')">Falecimento</button>
+          <button class="pill pill--action tooltip" data-art="Art. 9º-XXII" data-desc="Consultas de pré-natal."
+            onclick="buscarTermo('pré-natal')">Gestante</button>
+          <button class="pill pill--action tooltip" data-art="Art. 10" data-desc="Acordo prévio para abonos."
+            onclick="buscarTermo('acordo prévio')">Acordo Chefia</button>
+
+          <button class="pill pill--action tooltip" data-art="Art. 11" data-desc="Descontos por falta injustificada."
+            onclick="buscarTermo('descontadas')">Faltas/Descontos</button>
+          <button class="pill pill--action tooltip" data-art="Art. 12" data-desc="Prazos para justificativa (48h/24h)."
+            onclick="buscarTermo('48 horas')">Prazos</button>
+          <button class="pill pill--action tooltip" data-art="Art. 13" data-desc="Pagamento por substituição de função."
+            onclick="buscarTermo('substituição')">Subst. Chefia</button>
+          <button class="pill pill--action tooltip" data-art="Art. 16"
+            data-desc="Flexibilização do horário de almoço (1h)." onclick="buscarTermo('flexibilização')">Flex.
+            Almoço</button>
+          <button class="pill pill--action tooltip" data-art="Art. 19" data-desc="Limites e regras de Hora Extra."
+            onclick="buscarTermo('hora extra')">Hora Extra</button>
+          <button class="pill pill--action tooltip" data-art="Art. 25" data-desc="Limite de 10h e regras do Banco."
+            onclick="buscarTermo('saldo do banco')">Banco de Horas</button>
+          <button class="pill pill--action tooltip" data-art="Art. 33" data-desc="Jornada em viagens a serviço."
+            onclick="buscarTermo('viagens')">Viagem</button>
+          <button class="pill pill--action tooltip" data-art="Art. 41" data-desc="Regime de Sobreaviso."
+            onclick="buscarTermo('sobreaviso')">Sobreaviso</button>
+          <button class="pill pill--action tooltip" data-art="Art. 52" data-desc="Permuta e troca de plantão."
+            onclick="buscarTermo('troca de serviço')">Troca Plantão</button>
+
+          <button class="pill pill--action tooltip" data-art="Art. 53" data-desc="Responsabilidades do Empregado."
+            onclick="buscarTermo('responsabilidade do empregado')">Deveres Empregado</button>
+          <button class="pill pill--action tooltip" data-art="Art. 54" data-desc="Responsabilidades do Gestor."
+            onclick="buscarTermo('responsabilidade dos gestores')">Deveres Gestor</button>
+          <button class="pill pill--action tooltip" data-art="Art. 56" data-desc="O que é proibido (Vedações)."
+            onclick="buscarTermo('vedado')">Vedações</button>
+        </div>
+
+        <div id="resultadoContador" class="muted text-center"
+          style="margin-top: 8px; font-size: 0.85rem; min-height: 1.2em;"></div>
+      </div>
+    </section>
+
+    <section id="areaNorma" class="norma-container">
+    </section>
+
+    <button id="btnTopo" class="btn-float" onclick="window.scrollTo(0,0)">⬆</button>
+
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

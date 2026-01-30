@@ -1052,3 +1052,149 @@ details:nth-of-type(3) { animation-delay: 0.4s; }
 
 
 
+/* ============================= */
+/* Fluxograma — Situações Excepcionais */
+/* ============================= */
+
+.flow-grid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.flow-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flow-box {
+  min-width: 150px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.3;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.flow-arrow {
+  font-size: 1.2rem;
+  opacity: .6;
+}
+
+.flow-neutral {
+  background: #f1f3f5;
+}
+
+.flow-question {
+  background: #eef6ff;
+  border: 1px solid #b6d8ff;
+}
+
+.flow-ok {
+  background: #e6f4ea;
+  border: 1px solid #9fd6b3;
+}
+
+.flow-warn {
+  background: #fff4e5;
+  border: 1px solid #ffd8a8;
+}
+
+.flow-legend {
+  margin-top: 12px;
+  display: flex;
+  gap: 15px;
+  font-size: 0.8rem;
+}
+
+.flow-legend .legend {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.flow-legend .ok { background:#e6f4ea; }
+.flow-legend .warn { background:#fff4e5; }
+.flow-legend .danger { background:#fdecea; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .flow-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+
+
+
+/* ============================= */
+/* Fluxograma hierárquico */
+/* ============================= */
+
+.flow-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.flow-box.center{
+  text-align:center;
+}
+
+.flow-arrow{
+  font-size:1.2rem;
+  opacity:.6;
+}
+
+.flow-arrow.down{
+  margin:4px 0;
+}
+
+.flow-arrow.right{
+  margin-top:6px;
+}
+
+.flow-branch-horizontal{
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+  justify-content:center;
+}
+
+.flow-branch-col{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  min-width:220px;
+}
+
+.flow-rule{
+  margin-top:14px;
+  padding:12px 16px;
+  border-radius:10px;
+  background:#f6f7f9;
+  border:1px solid rgba(0,0,0,.08);
+  text-align:center;
+  font-size:.9rem;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .flow-branch-horizontal{
+    flex-direction:column;
+    gap:20px;
+  }
+}
+
+
+
+
+

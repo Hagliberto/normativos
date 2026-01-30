@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestão de Intervalos — Guia de Consulta + FAQ (CAERN)</title>
+  <meta name="description"
+    content="Guia de consulta sobre intervalos, escalas e vedações. Orientações para gestor, empregado e Núcleo de Pessoal/RH." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="bh_tolerancia/modal/bh_modal.css" />
+
+  <link rel="stylesheet" href="bh_tolerancia/modal/faq_modal.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container container--wide topbar__inner">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">⏱️</div>
+        <div class="brand__text">
+          <div class="brand__title">Gestão de Intervalos</div>
+          <div class="brand__subtitle">Guia de consulta • CAERN</div>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Atalhos">
+        <a class="topnav__link" href="#normativa">Base Normativa</a>
+        <a class="topnav__link" href="#regras">Regras</a>
+        <a class="topnav__link" href="#fluxo">Fluxos</a>
+        <a class="topnav__link" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" id="btnTheme" type="button" title="Alternar tema">🌗 Tema</button>
+        <button class="btn btn--ghost" id="btnPrint" type="button" title="Imprimir">🖨️ Imprimir</button>
+        <button class="btn btn--ghost" id="btnLogout" type="button" title="Sair do sistema">🚪 Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container container--wide">
+
+    <div class="hero__card" style="margin-bottom: 24px;">
+      <h1>
+        Gestão de Intervalos e Jornada
+        <span class="badge badge--danger"
+          style="vertical-align: middle; font-size: 0.4em; margin-left: 10px; color: rgb(148, 150, 148)">Orientações</span>
+      </h1>
+
+      <h3 style="color: var(--brand); margin-top: -10px;">
+        Norma de saúde e segurança do trabalho: direito irrenunciável e dever funcional.
+      </h3>
+
+      <div style="margin: 24px 0; border-left: 3px solid var(--border); padding-left: 16px;">
+        <p class="muted" style="margin: 0;">
+          Este ambiente consolida as diretrizes operacionais vigentes, fundamentadas na
+          <strong style="color: var(--text);">Norma Interna</strong>, no
+          <strong style="color: var(--text);">Manual de Ponto</strong> e no
+          <strong style="color: var(--text);">Acordo Coletivo de Trabalho</strong>.
+          Seu objetivo é padronizar o entendimento e mitigar riscos trabalhistas.
+        </p>
+        <p class="muted" style="margin-top: 8px; font-size: 0.9em;">
+          <em>O caráter deste guia é estritamente orientativo. Havendo divergência interpretativa,
+            <strong>a aplicação dos textos legais e normativos originais é soberana</strong>.</em>
+        </p>
+      </div>
+
+      <div class="alert alert--warn" role="note">
+        <div class="alert__title">⚠️ Governança e Compliance</div>
+        <div class="alert__text">
+          Esta ferramenta serve para consulta rápida. Decisões administrativas e disciplinares
+          devem ser sempre fundamentadas no documento oficial (disponível na Intranet/SEI).
+        </div>
+      </div>
+
+      <ul class="pillrow" aria-label="Pilares de Atuação">
+        <li class="pill">✅ Execução Rigorosa</li>
+        <li class="pill">🧾 Registro Fidedigno</li>
+        <li class="pill">👀 Monitoramento Ativo</li>
+        <li class="pill">🚫 Vedação à Informalidade</li>
+      </ul>
+
+      <div class="kpis" aria-label="Resumo rápido">
+        <div class="kpi">
+          <div class="kpi__label">Interjornada</div>
+          <div class="kpi__value">≥ 11h</div>
+          <div class="kpi__hint">Descanso entre jornadas</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Intrajornada (8h)</div>
+          <div class="kpi__value">1h–2h</div>
+          <div class="kpi__hint">Regra geral</div>
+          <div class="micro-note">*Conforme jornada cadastrada.</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Banco de Horas (+)</div>
+          <div class="kpi__value">6 meses</div>
+          <div class="kpi__hint">Prazo máx. compensação</div>
+          <div class="micro-note">*Necessita autorização.</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Banco de Horas (-)</div>
+          <div class="kpi__value">1 mês</div>
+          <div class="kpi__hint">Prazo máx. compensação</div>
+          <div class="micro-note">*Necessita autorização.</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Ajuda de Custo</div>
+          <div class="kpi__value">R$ 34,36</div>
+          <div class="kpi__hint">Jornada Administrativa</div>
+          <div class="micro-note">*Conforme regras ACT.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <details id="normativa" class="card" open> -->
+    <details id="normativa" class="card" close>
+      <summary>
+        <h2>📚 Base Normativa & Consulta</h2>
+      </summary>
+
+      <div class="details-content">
+
+
+
+
+
+        <div class="grid4">
+
+          <a href="leitor-norma/index.html" class="doc-link doc-link--anchor" style="border-color: var(--brand);">
+            <div class="doc-icon">💻</div>
+            <strong>Leitor Digital da Norma</strong>
+            <span>Texto pesquisável</span>
+            <small>Acesse o texto integral, organizado e pesquisável</small>
+          </a>
+
+
+          <button type="button" class="doc-link" onclick="openPdfViewer('norma')">
+            <div class="doc-icon">📜</div>
+            <strong>Norma de Jornada</strong>
+            <span>NN.DD.P.A.06.0008.05</span>
+            <small>Onde consultar: Intranet / SEI</small>
+          </button>
+
+          <button type="button" class="doc-link" onclick="openPdfViewer('acordo')">
+            <div class="doc-icon">🤝</div>
+            <strong>ACT 2024/2026</strong>
+            <span>Acordo Coletivo</span>
+            <small>Onde consultar: Sindicato / RH</small>
+          </button>
+
+          <button type="button" class="doc-link" onclick="openPdfViewer('manual')">
+            <div class="doc-icon">📘</div>
+            <strong>Manual de Ponto</strong>
+            <span>Guia Operacional</span>
+            <small>Portal do Colaborador</small>
+          </button>
+
+          <button type="button" class="doc-link" onclick="openPdfViewer('cartilha')">
+            <div class="doc-icon">🧩</div>
+            <strong>Cartilha</strong>
+            <span>Orientações e resumo</span>
+            <small>Onde consultar: Intranet / RH</small>
+          </button>
+        </div>
+
+        <div class="grid2" style="margin-top:16px;">
+          <a class="doc-link doc-link--anchor" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm"
+            target="_blank" rel="noopener noreferrer">
+            <div class="doc-icon">⚖️</div>
+            <strong>CLT (Planalto)</strong>
+            <span>Decreto-Lei nº 5.452/1943</span>
+            <small>Abrir página oficial</small>
+          </a>
+
+          <div class="panel panel--info">
+            <div class="panel__title">📌 Disponibilidade do normativo</div>
+            <div class="panel__text">
+              Os normativos e manuais são disponibilizados a <strong>todos os empregados</strong>: podem ser solicitados
+              ao <strong>gestor</strong>, ao <strong>Núcleo de Pessoal/RH</strong> ou baixados na
+              <strong>intranet</strong>.
+              Por isso, <strong>não é cabível alegar desconhecimento</strong> das regras aplicáveis.
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-pills" aria-label="Atalhos de consulta">
+          <span>Atalhos de consulta:</span>
+          <button class="pill pill--action" onclick="quickSearch('intervalo')">Intervalo</button>
+          <button class="pill pill--action" onclick="quickSearch('interjornada')">Interjornada</button>
+          <button class="pill pill--action" onclick="quickSearch('intrajornada')">Intrajornada</button>
+          <button class="pill pill--action" onclick="quickSearch('banco de horas')">Banco de Horas</button>
+          <button class="pill pill--action" onclick="quickSearch('tolerância')">Tolerância (15min)</button>
+        </div>
+      </div>
+    </details>
+
+    <div id="regras">
+
+      <details class="card">
+        <summary>
+          <h2>Tabela Padrão de Intervalos</h2>
+        </summary>
+
+        <div class="details-content">
+          <div class="tablewrap">
+            <div class="panel panel--info" style="margin-bottom: 20px;">
+              <div class="panel__title">📌 Intervalo: Saúde e Segurança (Não Negociável)</div>
+
+              <div class="grid2" style="align-items: flex-start; margin-top: 10px;">
+
+                <div>
+                  <h3 style="font-size: 1rem; color: var(--brand); margin-bottom: 10px;">⚖️ O que diz a Lei (CLT Art.
+                    71)</h3>
+                  <div
+                    style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; border: 1px solid var(--border);">
+                    <ul class="check" style="padding-left: 0; list-style: none; margin: 0;">
+                      <li style="border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">
+                        <strong>Jornada > 6 horas:</strong><br>
+                        Mínimo <strong>1h</strong> e máximo <strong>2h</strong>.
+                        <div class="micro-note">
+                          *Pode ser 30min apenas se houver Acordo/Convenção Coletiva (Lei 13.467/2017).
+                          <td><strong>Jornada</strong> (Escala de Revezamento) <span class="cite-badge"
+                              data-pdf="acordo" data-page="16">ACT Cl. 14 §9</span></td>
+                          <br>
+                          <td><strong>❌ Observações Importantes</strong> (Intervalos) <span class="cite-badge"
+                              data-pdf="manual" data-page="9">Vedação</span></td>
+                        </div>
+                      </li>
+                      <li style="border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">
+                        <strong>Jornada 4 a 6 horas:</strong><br>
+                        Mínimo <strong>15 minutos</strong>.
+                      </li>
+                      <li>
+                        <strong>Interjornada (Entre dias):</strong><br>
+                        Mínimo de <strong>11 horas</strong> consecutivas (CLT Art. 66).
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="alert alert--warn" style="margin-top: 16px;">
+                    <div class="alert__title">🚫 Mito: "Sair mais cedo"</div>
+                    <div class="alert__text">
+                      <strong>NÃO É PERMITIDO.</strong> Mesmo que o funcionário peça, a legislação proíbe trocar o
+                      intervalo pela saída antecipada.
+                      <br><small>Ex: Trabalhar direto para sair às 16:30h em vez de 17:30h é ilegal.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 style="font-size: 1rem; color: var(--danger); margin-bottom: 10px;">⚠️ Riscos e Penalidades</h3>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>1. Pagamento de Hora Extra (50%)</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      Se o intervalo for suprimido (mesmo que parcialmente), a empresa deve indenizar o tempo não gozado
+                      com acréscimo de 50%.
+                    </p>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>2. Multas Administrativas</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      Fiscalizações do MTE podem aplicar multas baseadas nos Art. 71 e 75 da CLT.
+                    </p>
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <strong>3. Passivo Trabalhista</strong>
+                    <p class="muted" style="margin: 4px 0 12px 0; font-size: 0.9rem;">
+                      A prática gera reflexos em Férias, 13º, FGTS e Aviso Prévio. Em ações trabalhistas, a condenação
+                      inclui custas e honorários.
+                    </p>
+                  </div>
+
+                  <div class="panel"
+                    style="background: rgba(253, 230, 138, 0.1); border-color: var(--warn); padding: 12px;">
+                    <strong style="color: var(--warn);">Conclusão:</strong>
+                    <div class="micro-note" style="margin-top: 4px; font-size: 0.85rem; color: var(--text);">
+                      Respeitar o intervalo protege a saúde do trabalhador e a sustentabilidade da empresa. <strong>Não
+                        gere passivos evitáveis.</strong>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Regime</th>
+                  <th>Jornada</th>
+                  <th>Regra de Intervalo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge badge--blue">Escala de Revezamento 12x36</span></td>
+                  <td>12h Trab / 36h Desc</td>
+                  <td><strong>30 min</strong> (Indenizado) <span class="cite-badge" data-pdf="acordo" data-page="16">ACT
+                      Cl. 14 §9</span></td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge--blue">Escala de Revezamento 24x72</span></td>
+                  <td>24h Trab / 72h Desc</td>
+                  <td><strong>1 hora</strong> (Indenizado) <span class="cite-badge" data-pdf="acordo" data-page="16">ACT
+                      Cl. 14 §9</span></td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge--green">Administrativo (Extra)</span></td>
+                  <td>8h + Extras</td>
+                  <td>
+                    Padrão: <strong>2h obrigatórias</strong><br>
+                    Exceção*: <strong>1h a 2h</strong>
+                    <div class="micro-note">*Fora da Jornada Padrão Cadastrada</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge--purple">Administrativo (Banco)</span></td>
+                  <td>8h Flexíveis</td>
+                  <td><strong>Mínimo 1h</strong> e <strong>Máximo 2h</strong> (Flexibilidade)*
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Art. 16</span>
+                    <span class="cite-badge" data-pdf="manual" data-page="6">Manual pag. 6</span>
+                    <span class="cite-badge" data-pdf="manual" data-page="8">Manual pag. 8</span>
+                    <div class="micro-note">*Necessita autorização do gestor e Cadastro pelo Núcleo de Pessoal</div>
+                    <div class="micro-note">*Grupo de Regras Hora Extra <strong>NÃO</strong> se enquadra nesta regra.
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="badge badge--purple">Administrativo (Banco)</span></td>
+                  <td>8h Geral</td>
+                  <td><strong>Máximo 2h</strong> (07:30h a 17:30h)
+                    <span class="cite-badge" data-pdf="norma" data-page="6">Norma Art. 16</span>
+                    <div class="micro-note">*A tolerância, de 15 minutos, não deve ser usada como regra.</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details class="card">
+        <summary>
+          <h2>Situações Excepcionais</h2>
+        </summary>
+
+        <div class="details-content">
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Situação</th>
+                  <th>Regramento & Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Escala → Admin/Extra</strong><br>
+                    <small>Ex: Treinamento ou convocação em folga</small>
+                  </td>
+                  <td>
+                    Paga-se <strong>Adicional</strong> (de horas extras de 100%, em Sáb, Dom e Feriados).<br>
+                    Deve cumprir intervalo administrativo (1h–2h).
+                    <span class="cite-badge" data-pdf="acordo" data-page="16">ACT Cl. 14 §5</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Admin → Escala</strong><br>
+                    <small>Substituição de plantão</small>
+                  </td>
+                  <td>
+                    Intervalo da escala (30min ou 1h).<br>
+                    Ajuda de Custo¹: <strong>R$ 34,36</strong>.
+                    <span class="cite-badge" data-pdf="acordo" data-page="3">ACT Cl. 4 §1*</span>
+                    <div class="micro-note">*Requer solicitação de mundança junto ao Núcleo de Pessoal.</div>
+                    <div class="micro-note">*¹Sem mudança de jornada, a ajuda de custo será a Administrativa.</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel panel--info" style="margin-top: 20px;">
+            <div class="panel__title">📌 Gestor e Empregados devem zelar pelo cumprimento dos intervalos.</div>
+            <div class="panel__text">
+              Intercorrências podem acontecer, mas, uma boa gestão evita descumprimento de normativos.
+              <strong>Os normativos garantem a saúde dos empregados e da empresa</strong>.
+              <br><br>❌ Por isso, <strong>não é cabível alegar desconhecimento</strong> das regras aplicáveis.
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <details class="card">
+      <summary>
+        <h2>Compensação de Banco de Horas</h2>
+      </summary>
+
+      <div class="details-content">
+        <p>
+          É a regularização do saldo em cumprimento à jornada padrão.
+          <br>
+          <small>
+            <strong>Aplica-se a:</strong> Empregados no "Grupo de Regra Banco de Horas".
+            <span class="cite-badge" data-pdf="manual" data-page="14">Pág. 14 - Manual</span>
+          </small>
+        </p>
+
+        <div class="grid2">
+          <div class="panel panel--ok">
+            <div class="panel__title">Saldo Positivo (+)</div>
+            <div class="panel__text">
+              <p><strong>Prazo:</strong> Até <strong>6 meses</strong> da realização.</p>
+              <p><strong>Como compensar:</strong> Redução parcial ou integral da jornada.</p>
+              <p class="text-warning">
+                ⚠ Exige acordo prévio com a chefia. Não é permitida "compensação em aberto" (falta sem aviso).
+              </p>
+              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13 - Manual</span>
+            </div>
+          </div>
+
+          <div class="panel panel--danger">
+            <div class="panel__title">Saldo Negativo (-)</div>
+            <div class="panel__text">
+              <p><strong>Prazo:</strong> Até o <strong>mês subsequente</strong>.</p>
+              <p><strong>Como compensar:</strong> Realização de horas extras.</p>
+              <p class="text-warning">
+                ⚠ Deve ser previamente autorizada pela chefia imediata.
+              </p>
+              <span class="cite-badge" data-pdf="manual" data-page="13">Pág. 13 - Manual</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel--info" style="margin-top: 1rem;">
+          <div class="panel__title">Regras e Limites Importantes</div>
+          <div class="panel__text">
+            <ul>
+              <li>
+                <strong>Limite de Acúmulo:</strong> O Banco Positivo tem teto de <strong>10h</strong>. Ao atingir, é
+                obrigatório compensar antes de fazer novas extras.
+              </li>
+              <li>
+                <strong>Transferência ou Desligamento:</strong> O saldo deve ser zerado antes.
+                <br><em>Exceção:</em> Saldos dentro da margem de <strong>04h</strong> (positivas ou negativas) não
+                impedem
+                a movimentação.
+              </li>
+            </ul>
+
+            <div class="alert-box"
+              style="border: 1px solid #d9534f; padding: 10px; border-radius: 4px; background: #fdf7f7; color: #a71d2a;">
+              <strong>⚠ Atenção:</strong> A utilização contínua dos <strong>15 min de tolerância</strong>
+              (entrada/saída)
+              para gerar horas extras é <strong>indevida</strong> e passível de apuração de conduta.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 7 - Art.29</span>
+            </div>
+
+            <div class="bh-cta">
+              <div class="bh-cta__text">
+                <b>⚖️ Tolerância de 15 min: quando é permitido e quando vira indevido</b>
+                <div class="bh-cta__muted">
+                  Explicação prática e jurídica (com exemplos).
+                </div>
+              </div>
+
+
+            <div class="bh-cta bh-cta--faq">
+              <div class="bh-cta__text">
+                <b>📘 FAQ interativo: dúvidas comuns (Jornada • Intervalo • Tolerância)</b>
+                <div class="bh-cta__muted">
+                  Perguntas e respostas objetivas, com base legal e referência (documento/página).
+                </div>
+              </div>
+
+              <button type="button" class="bh-btn bh-btn--primary" data-faq-open-page-direct>
+                Abrir FAQ
+              </button>
+            </div>
+              <button type="button" class="bh-btn bh-btn--primary" data-bh-open>
+                Explicação
+              </button>
+            </div>
+
+            <div style="text-align: right; margin-top: 5px;">
+              <span class="cite-badge" data-pdf="manual" data-page="14">Pág. 14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details id="fluxo" class="card">
+      <summary>
+        <h2>Fluxos de atuação</h2>
+      </summary>
+
+      <div class="details-content">
+        <p class="muted">
+          Fluxos resumidos para padronizar a atuação. Use como <strong>guia</strong> e valide sempre no documento
+          oficial aplicável.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Fluxos por papel">
+          <button class="tab active" type="button" data-tab="gestor" role="tab" aria-selected="true">👔 Gestor</button>
+          <button class="tab" type="button" data-tab="empregado" role="tab" aria-selected="false">👤 Empregado</button>
+          <button class="tab" type="button" data-tab="rh" role="tab" aria-selected="false">🏢 Núcleo de
+            Pessoal/RH</button>
+        </div>
+
+        <div class="tabpanels">
+          <div class="tabpanel active" data-panel="gestor" role="tabpanel">
+            <div class="flow-grid">
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">👁️</div>
+                  <div>
+                    <div class="flow-title">1) Monitorar</div>
+                    <div class="flow-sub">Diário/semanal: ponto, jornada e intervalos</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Verificar marcações e pendências no sistema.</li>
+                  <li>Identificar padrões de descumprimento (intra/interjornada).</li>
+                </ul>
+              </div>
+
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">✅</div>
+                  <div>
+                    <div class="flow-title">2) Tratar em prazo</div>
+                    <div class="flow-sub">Analisar/aprovar ocorrências tempestivamente</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Orientar o empregado a registrar a ocorrência corretamente.</li>
+                  <li>Validar ocorrências dentro do prazo definido no manual.
+                    <span class="cite-badge" data-pdf="manual" data-page="5">Manual Pág. 5</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">🗣️</div>
+                  <div>
+                    <div class="flow-title">3) Orientar e corrigir</div>
+                    <div class="flow-sub">Correção de rotina e prevenção de reincidência</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Feedback verbal imediato.</li>
+                  <li>Reforçar obrigação de registrar intervalos corretamente.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card flow-card--warn">
+                <div class="flow-head">
+                  <div class="flow-icon">⚠️</div>
+                  <div>
+                    <div class="flow-title">4) Notificar (reincidência)</div>
+                    <div class="flow-sub">Registrar formalmente quando houver repetição</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Notificação escrita em caso de reincidência.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma (Gestores)</span>
+                  </li>
+                  <li>Guardar evidências e histórico da tratativa.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card flow-card--danger">
+                <div class="flow-head">
+                  <div class="flow-icon">⚖️</div>
+                  <div>
+                    <div class="flow-title">5) Escalonar</div>
+                    <div class="flow-sub">Acionar instâncias competentes quando necessário</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Encaminhar casos reincidentes conforme normativo.</li>
+                  <li>Comunicar Núcleo de Pessoal/RH sobre situações não previstas.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 5</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabpanel" data-panel="empregado" role="tabpanel">
+            <div class="flow-grid">
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">🧾</div>
+                  <div>
+                    <div class="flow-title">1) Registrar corretamente</div>
+                    <div class="flow-sub">Entrada, saída e intervalos conforme sua jornada</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Registrar fielmente a frequência, incluindo intervalos.
+                    <span class="cite-badge" data-pdf="norma" data-page="4">Norma Pág. 4</span>
+                  </li>
+                  <li>Não permitir registro por terceiros (falta grave).</li>
+                </ul>
+              </div>
+
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">🕒</div>
+                  <div>
+                    <div class="flow-title">2) Em caso de erro</div>
+                    <div class="flow-sub">Usar o fluxo de ocorrência/ajuste no prazo</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Se esquecer uma marcação, abrir ajuste até o dia útil seguinte.
+                    <span class="cite-badge" data-pdf="norma" data-page="7">Manual (Esqueci)</span>
+                  </li>
+                  <li>Comunicar o gestor imediato.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">📌</div>
+                  <div>
+                    <div class="flow-title">3) Conferir mensalmente</div>
+                    <div class="flow-sub">Antes da validação final</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Conferir e assinar a folha de frequência virtual mensal.
+                    <span class="cite-badge" data-pdf="norma" data-page="4">Norma Pág. 4</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flow-card flow-card--warn">
+                <div class="flow-head">
+                  <div class="flow-icon">🚫</div>
+                  <div>
+                    <div class="flow-title">4) Evitar vedações</div>
+                    <div class="flow-sub">O “atalho” vira problema</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Não adulterar registros.</li>
+                  <li>Não descumprir intervalos.
+                    <span class="cite-badge" data-pdf="norma" data-page="4">Norma Pág. 4</span>
+                    <span class="cite-badge" data-pdf="norma" data-page="11">Norma Pág. 11</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabpanel" data-panel="rh" role="tabpanel">
+            <div class="flow-grid">
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">📥</div>
+                  <div>
+                    <div class="flow-title">1) Receber e orientar</div>
+                    <div class="flow-sub">Padronizar a orientação institucional</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Sanar dúvidas com base nos documentos oficiais.</li>
+                  <li>Reforçar que o guia é informativo.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card">
+                <div class="flow-head">
+                  <div class="flow-icon">🧩</div>
+                  <div>
+                    <div class="flow-title">2) Tratar casos não previstos</div>
+                    <div class="flow-sub">Quando a situação foge ao padrão</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Receber comunicação do gestor sobre ocorrências não previstas.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 5</span>
+                  </li>
+                  <li>Orientar o encaminhamento correto.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card flow-card--warn">
+                <div class="flow-head">
+                  <div class="flow-icon">🧭</div>
+                  <div>
+                    <div class="flow-title">3) Manter rastreabilidade</div>
+                    <div class="flow-sub">Registro e histórico</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Garantir trilha de auditoria de orientações.</li>
+                  <li>Atualizar comunicados internos quando houver mudanças.</li>
+                </ul>
+              </div>
+
+              <div class="flow-card flow-card--danger">
+                <div class="flow-head">
+                  <div class="flow-icon">⚖️</div>
+                  <div>
+                    <div class="flow-title">4) Acionar instâncias</div>
+                    <div class="flow-sub">Conforme normativos internos</div>
+                  </div>
+                </div>
+                <ul class="check">
+                  <li>Encaminhar casos reincidentes conforme fluxo institucional.</li>
+                  <li>Orientar gestores sobre vedações.
+                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 5</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details id="faq" class="card">
+      <summary>
+        <h2>FAQ — Dúvidas Frequentes</h2>
+      </summary>
+
+      <div class="details-content">
+        <div class="faq__head" style="margin-top: 0;">
+          <div class="faq__tools">
+            <label class="search">
+              <span class="search__icon">🔎</span>
+              <input id="faqSearch" type="search" placeholder="Buscar dúvida..." />
+            </label>
+          </div>
+        </div>
+        <div id="faqList" class="accordion"></div>
+        <div class="muted" style="margin-top:12px;">
+          Dica: clique nos selos <span class="cite-badge" data-pdf="norma" data-page="4">📄</span> para abrir o ponto do
+          documento.
+        </div>
+      </div>
+    </details>
+
+    <footer class="footer">
+      <div class="muted">
+        Este site é um <strong>guia de consulta</strong> e <strong>não substitui</strong> os documentos oficiais.
+        <br>
+        Hagliberto Alves de Oliveira • Versão 2.9.6 • Janeiro de 2026
+      </div>
+    </footer>
+  </main>
+
+  <div id="bhInfoModal" class="bh-modal" aria-hidden="true">
+    <dialog class="bh-modal__panel" id="bhInfoPanel" aria-label="Tolerância de 15 minutos">
+      <header class="bh-modal__header">
+        <div class="bh-modal__title">
+          <span>📌 Tolerância de 15 min</span>
+          <span class="bh-chip">Banco de Horas</span>
+        </div>
+
+        <div class="bh-modal__actions">
+          <button type="button" class="bh-btn" data-bh-open-page>Abrir em página</button>
+          <button type="button" class="bh-btn" data-bh-close>Fechar</button>
+        </div>
+      </header>
+
+      <div class="bh-modal__body">
+        <iframe id="bhInfoFrame" class="bh-modal__iframe" data-src="bh_tolerancia/index.html" src="about:blank"
+          title="Explicação sobre tolerância de 15 minutos" loading="lazy"></iframe>
+      </div>
+  </div>
+  </div>
+
+  <div id="pdfModal" class="pdf-modal" aria-hidden="true">
+    <div class="pdf-modal__content" id="pdfModalContent">
+      <header class="pdf-header">
+        <div class="pdf-title">
+          <span id="pdfDocTitle">Documento</span>
+          <span class="pdf-page-indicator">Pág <span id="pdfPageNum">1</span></span>
+        </div>
+        <div class="pdf-controls">
+          <input type="text" id="pdfInternalSearch" placeholder="Buscar no índice..." class="pdf-search-input">
+          <button class="btn btn--sm" type="button" onclick="toggleViewerFullscreen()" title="Tela cheia">⛶</button>
+          <button class="btn btn--sm" type="button" onclick="closePdfViewer()">❌ Fechar</button>
+        </div>
+      </header>
+
+      <div class="pdf-body">
+        <aside class="pdf-sidebar" id="pdfSidebar">
+          <div class="sidebar-header">Índice remissivo (clique para ir)</div>
+          <div id="pdfSearchResults" class="sidebar-list">
+            <div class="empty-state">Digite para buscar...</div>
+          </div>
+        </aside>
+
+        <main class="pdf-viewport">
+          <div class="pdf-navigation">
+            <button class="btn btn--icon" type="button" onclick="changePage(-1)">⬅️</button>
+            <button class="btn btn--icon" type="button" onclick="changePage(1)">➡️</button>
+          </div>
+
+          <div id="pdfViewerContainer" class="pdf-container">
+            <iframe id="realPdfFrame" class="pdf-frame" src="" title="Visualizador de PDF"></iframe>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="app.js"></script> -->
+  <script type="module" src="app.js"></script>
+  <script defer src="bh_tolerancia/modal/bh_modal.js"></script>
+
+
+  <!-- FAQ Modal -->
+  <dialog class="faq-modal" id="faqModal" aria-label="FAQ interativo">
+    <div class="faq-modal__panel" id="faqPanel">
+      <div class="faq-modal__header">
+        <div class="faq-modal__title">
+          <strong>FAQ — Jornada, Intervalo e Tolerância</strong>
+          <span>Use busca e filtros • fonte oficial: Norma/Manual/ACT/CLT</span>
+        </div>
+        <div class="faq-modal__actions">
+          <button class="faq-modal__btn faq-modal__btn--primary" type="button" data-faq-open-page>↗ Abrir em nova aba</button>
+          <button class="faq-modal__btn" type="button" data-faq-close>✕ Fechar</button>
+        </div>
+      </div>
+      <iframe class="faq-modal__iframe" id="faqFrame" title="FAQ" data-src="bh_tolerancia/faq.html" src="about:blank"></iframe>
+    </div>
+  </dialog>
+
+  <script src="bh_tolerancia/modal/faq_modal.js"></script>
+</body>
+
+<div id="loginScreen" class="login-overlay">
+  <div class="card login-card">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+    <h2>Acesso Restrito</h2>
+    <p class="muted">Informe o PIN para acessar o Guia de Intervalos.</p>
+
+    <div class="login-form">
+      <input type="password" id="pinInput" class="pin-input" placeholder="Senha" maxlength="20" />
+      <button type="button" class="btn btn--lg" onclick="validatePin()">Entrar</button>
+    </div>
+
+    <div id="loginError" class="alert alert--warn hidden" style="margin-top: 15px; font-size: 0.9rem;">
+      🚫 PIN Incorreto. Tente novamente.
+    </div>
+  </div>
+</div>
+
+</html>
