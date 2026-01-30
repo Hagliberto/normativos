@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Jornada, Intervalo e Tolerância</title>
+
+  <!-- Reaproveita o mesmo CSS do projeto + o CSS do Leitor Digital da Norma -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="faq_style.css">
+
+  <style>
+    /* Ajustes mínimos para rodar bem dentro do iframe/modal */
+    body { background: var(--bg); }
+    .container--fluid { padding-top: 18px; }
+    .hero__card h2 { margin: 0 0 10px; }
+    .faq-list { margin-top: 16px; display: grid; gap: 10px; }
+    details.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    details.faq-item summary { list-style: none; cursor: pointer; padding: 14px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    details.faq-item summary::-webkit-details-marker{ display:none; }
+    .faq-q { font-weight: 700; line-height: 1.25; }
+    .faq-meta { display:flex; align-items:center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .tag-mini { font-size: .78rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: rgba(2,132,199,.08); color: var(--brand-dark); }
+    .faq-a { padding: 0 14px 14px; color: var(--text); }
+    .faq-a p { margin: 10px 0; }
+    .base-pills { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .base-pill { border: 1px solid var(--border); background: var(--card); color: var(--text); padding: 6px 10px; border-radius: 999px; font-size: .82rem; cursor:pointer; }
+    .base-pill:hover { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(2,132,199,.12); }
+    .empty { display:none; margin-top: 14px; color: var(--muted); text-align:center; }
+    .quick-pills.center-pills { justify-content: center; }
+    #faqTags .pill{ cursor:pointer; user-select:none; }
+    #faqTags .pill.pill--off{ opacity:.55; filter:saturate(.6); }
+    #faqTags .pill.pill--off:hover{ opacity:.85; }
+
+  </style>
+</head>
+
+<body>
+  <main class="container container--fluid">
+    <section class="search-section">
+      <div class="card hero__card">
+        <h2 style="text-align:center; font-size: 1.2rem; border:none;">FAQ interativo — Jornada, Intervalo e Tolerância</h2>
+        <p style="text-align:center; margin: 0 0 14px; color: var(--muted);">
+          Use a busca e os filtros para navegar. Linguagem de reunião (gestor ↔ empregados), com indicação de base (Documento • Art/Cláusula • Página).
+        </p>
+
+        <div class="search-box-wrapper">
+          <input type="text" id="faqSearch" class="big-search" placeholder="Pesquisar termo... (ex.: tolerância, intervalo, banco de horas)">
+          <div class="search-icon">🔍</div>
+        </div>
+
+        <!-- Pills no estilo do Leitor Digital -->
+        <div class="quick-pills center-pills" id="faqTags">
+          <button class="pill pill--action" data-filter="jornada" aria-pressed="true">Jornada</button>
+          <button class="pill pill--action" data-filter="intervalo" aria-pressed="true">Intervalo</button>
+          <button class="pill pill--action" data-filter="tolerancia" aria-pressed="true">Tolerância</button>
+          <button class="pill pill--action" data-filter="ponto" aria-pressed="true">Registro/Ponto</button>
+          <button class="pill pill--action" data-filter="conduta" aria-pressed="true">Conduta</button>
+        </div>
+      </div>
+
+      <div id="faqList" class="faq-list"></div>
+      <div id="faqEmpty" class="empty">Nenhum item encontrado com esses filtros.</div>
+    </section>
+  </main>
+
+  <script>
+    // =========================================================
+    // Dados do FAQ (reunião)
+    // =========================================================
+    const FAQ = [
+      {
+        cat: "jornada",
+        q: "“Minha jornada é flexível? Posso entrar e sair em horários diferentes todos os dias?”",
+        a: `
+          <p><b>Resposta:</b> A flexibilidade não é automática nem definitiva. Depende de autorização do gestor, conforme horários previamente estipulados e garantindo o funcionamento do setor.</p>
+          <p><b>Orientação:</b> Não existe liberdade para o empregado definir horários de forma unilateral.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Flexibilidade (pág. 8)", file:"Manual.pdf", page:8 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Se eu cumprir as 8 horas no dia, importa o horário que eu entrei?”",
+        a: `
+          <p><b>Resposta:</b> Sim. A jornada deve ser cumprida dentro do horário cadastrado/autorizado. Cumprimento fora do horário sem autorização pode caracterizar desconformidade, mesmo com total diário atingido.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Registro de frequência (pág. 6–7)", file:"Manual.pdf", page:6 },
+          ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Posso reduzir meu intervalo para sair mais cedo?”",
+        a: `
+          <p><b>Resposta:</b> Não. É vedado compensar atrasos/saídas antecipadas reduzindo o intervalo intrajornada. O intervalo é regra prevista na CLT e no normativo interno.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Observações importantes (pág. 9)", file:"Manual.pdf", page:9 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Se eu não fizer o intervalo completo, posso compensar depois?”",
+        a: `
+          <p><b>Resposta:</b> Não. O intervalo deve ser cumprido conforme jornada definida. A fruição parcial/indevida pode ensejar apuração de descumprimento do normativo e da CLT.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Observações importantes (pág. 9)", file:"Manual.pdf", page:9 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“A tolerância de 15 minutos me permite entrar mais tarde ou sair mais cedo todo dia?”",
+        a: `
+          <p><b>Resposta:</b> Não. A tolerância existe para evitar validações pontuais no sistema. Em nenhuma hipótese exime o empregado de cumprir a jornada cadastrada, nem autoriza uso habitual para acumular saldo/minutos indevidos.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Tolerância 15min / CLT art. 58 §1º (pág. 7)", file:"Manual.pdf", page:7 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Se o sistema aceita o registro, então está permitido, certo?”",
+        a: `
+          <p><b>Resposta:</b> Não. O sistema registra; ele não autoriza condutas irregulares. O uso reiterado e estratégico da tolerância pode ser tratado como desconformidade e conduta indevida.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Tolerância / responsabilização (pág. 7)", file:"Manual.pdf", page:7 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Se eu esquecer de bater ponto, como faço? Posso pedir para alguém registrar por mim?”",
+        a: `
+          <p><b>Resposta:</b> Deve ser criado um ajuste de ponto no dia útil seguinte, informando o horário praticado e comunicando ao gestor. É vedado registro por terceiros (falta grave).</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Ajuste de ponto / vedação (pág. 6–7)", file:"Manual.pdf", page:6 },
+          { doc:"Manual", label:"Manual — Vedação: ponto por terceiros (pág. 4)", file:"Manual.pdf", page:4 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Quantas vezes eu devo bater ponto por dia?”",
+        a: `
+          <p><b>Resposta:</b> Depende da jornada. Para jornada acima de 4h e escalas 12x36, normalmente: entrada, início do intervalo, volta do intervalo e saída. Há regras específicas para 24x72.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Quantidade de marcações (pág. 6)", file:"Manual.pdf", page:6 },
+        ]
+      },
+      {
+        cat: "conduta",
+        q: "“Quais as consequências de descumprir jornada/intervalo/tolerância de forma repetida?”",
+        a: `
+          <p><b>Resposta:</b> O gestor deve orientar e notificar (verbal e por escrito em reincidência). Casos reincidentes podem ser encaminhados ao Comitê de Conduta, Integridade e Ética (CCE), conforme normativos internos.</p>
+        `,
+        bases: [
+          { doc:"Manual", label:"Manual — Responsabilidades do gestor (pág. 5)", file:"Manual.pdf", page:5 },
+          { doc:"Manual", label:"Manual — Vedações/descumprimentos reiterados (pág. 4)", file:"Manual.pdf", page:4 },
+        ]
+      }
+    ];
+
+    function norm(s){
+      return (s||"").toLowerCase()
+        .normalize("NFD").replace(/\p{Diacritic}/gu,"")
+        .trim();
+    }
+
+    // Render
+    const list = document.getElementById("faqList");
+    const empty = document.getElementById("faqEmpty");
+    const q = document.getElementById("faqSearch");
+    const tagWrap = document.getElementById("faqTags");
+    const allCats = ["jornada","intervalo","tolerancia","ponto","conduta"];
+    const active = new Set(allCats);
+
+    function render(items){
+      list.innerHTML = items.map(it => {
+        const bases = (it.bases||[]).map(b => {
+          // PDFs na raiz do projeto (mesmo nível do index.html). O iframe está em /bh_tolerancia/
+          // então subimos 1 nível.
+          const href = `../assets/${b.file}#page=${b.page}`;
+          return `<a class="base-pill" href="${href}" target="_blank" rel="noopener noreferrer" title="Abrir PDF na página ${b.page}">${b.label}</a>`;
+        }).join("");
+
+        const tagLabel = it.cat === "ponto" ? "Registro/Ponto" : (it.cat.charAt(0).toUpperCase()+it.cat.slice(1));
+        return `
+          <details class="faq-item" data-cat="${it.cat}">
+            <summary>
+              <div class="faq-q">${it.q}</div>
+              <div class="faq-meta">
+                <span class="tag-mini">${tagLabel}</span>
+              </div>
+            </summary>
+            <div class="faq-a">
+              ${it.a}
+              <div class="base-pills">${bases}</div>
+            </div>
+          </details>
+        `;
+      }).join("");
+    }
+
+    function apply(){
+      const term = norm(q.value);
+      let shown = 0;
+
+      const hasAny = active.size > 0;
+
+      const filtered = FAQ.filter(it => {
+        const okCat = !hasAny || active.has(it.cat);
+        if (!okCat) return false;
+        if (!term) return true;
+        const hay = norm(it.q + " " + it.a + " " + (it.bases||[]).map(b=>b.label).join(" "));
+        return hay.includes(term);
+      });
+
+      render(filtered);
+      shown = filtered.length;
+      empty.style.display = shown ? "none" : "block";
+    }
+
+    // Pills toggle (mesma UX do leitor)
+    // Regras:
+    // - Sempre clicável (mesmo quando "desligado")
+    // - Visual muda via aria-pressed + classe .pill--off
+    tagWrap.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-filter]");
+      if (!btn) return;
+
+      const key = btn.getAttribute("data-filter");
+      const isOn = btn.getAttribute("aria-pressed") === "true";
+      const next = !isOn;
+
+      btn.setAttribute("aria-pressed", String(next));
+      btn.classList.toggle("pill--off", !next);
+
+      if (next) active.add(key);
+      else active.delete(key);
+
+      apply();
+    });
+
+    q.addEventListener("input", apply);
+
+    // init
+    apply();
+  </script>
+</body>
+</html>

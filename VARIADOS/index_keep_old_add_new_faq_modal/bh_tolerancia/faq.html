@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Jornada, Intervalo e Tolerância</title>
+  <style>
+    :root{ color-scheme: light; }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f7fb;
+      color:#111827;
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 16px; }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(17,24,39,.10);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+    h1{ margin: 0 0 8px; font-size: 20px; line-height: 1.2; }
+    .sub{ margin:0 0 12px; color: rgba(17,24,39,.72); font-size: 13px; }
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; margin: 10px 0 12px;
+    }
+    .search{
+      flex: 1 1 240px;
+      display:flex; align-items:center; gap:8px;
+      background: #fff;
+      border: 1px solid rgba(17,24,39,.12);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .search input{
+      width:100%; border:0; outline:0; font-size: 14px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 1px solid rgba(17,24,39,.12);
+      background:#fff;
+      padding: 9px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: rgba(17,24,39,.75);
+      user-select:none;
+    }
+    .pill input{ accent-color:#2563eb; }
+    .list{ display:flex; flex-direction:column; gap:10px; }
+    details{
+      background:#fff;
+      border: 1px solid rgba(17,24,39,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.04);
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex; align-items:flex-start; gap:10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .q{
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .tag{
+      margin-left:auto;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,24,39,.12);
+      background: rgba(37,99,235,.06);
+      color: rgba(37,99,235,.95);
+      white-space:nowrap;
+    }
+    .a{
+      padding: 8px 4px 2px;
+      color: rgba(17,24,39,.88);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .base{
+      margin-top: 10px;
+      border-top: 1px dashed rgba(17,24,39,.16);
+      padding-top: 8px;
+      font-size: 12px;
+      color: rgba(17,24,39,.70);
+    }
+    .base b{ color: rgba(17,24,39,.90); }
+    .muted{ color: rgba(17,24,39,.65); }
+    .empty{
+      display:none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px dashed rgba(17,24,39,.20);
+      color: rgba(17,24,39,.70);
+      background: rgba(255,255,255,.6);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>FAQ — Jornada, Intervalo e Tolerância</h1>
+      <p class="sub">Use a busca e os filtros para navegar. Linguagem de reunião (gestor ↔ empregados), com indicação de base (Documento • Art/Cláusula • Página).</p>
+
+      <div class="toolbar">
+        <div class="search" role="search">
+          <span aria-hidden="true">🔎</span>
+          <input id="q" type="search" placeholder="Buscar por palavra-chave: tolerância, intervalo, jornada, ponto, gestor..." />
+        </div>
+        <label class="pill"><input type="checkbox" id="fJornada" checked /> Jornada</label>
+        <label class="pill"><input type="checkbox" id="fIntervalo" checked /> Intervalo</label>
+        <label class="pill"><input type="checkbox" id="fTolerancia" checked /> Tolerância</label>
+        <label class="pill"><input type="checkbox" id="fPonto" checked /> Registro/Ponto</label>
+        <label class="pill"><input type="checkbox" id="fConduta" checked /> Conduta</label>
+      </div>
+
+      <div class="list" id="list">
+        <!-- Jornada -->
+        <details data-cat="jornada">
+          <summary><span class="q">“Minha jornada é flexível? Posso entrar e sair em horários diferentes todos os dias?”</span><span class="tag">Jornada</span></summary>
+          <div class="a">
+            A jornada tem regras definidas em norma interna, ACT e CLT. Flexibilidade <b>não é automática</b> e <b>não é definitiva</b>; depende de autorização do gestor e da necessidade do serviço, preservando o funcionamento do setor.
+            <div class="base"><b>Base:</b> Manual (Flexibilidade de Horário, p. 8) • Norma (conceitos e horário administrativo, p. 1–2) • CLT art. 58.</div>
+          </div>
+        </details>
+
+        <details data-cat="jornada">
+          <summary><span class="q">“Se eu cumprir as 8 horas no dia, importa o horário que eu entrei?”</span><span class="tag">Jornada</span></summary>
+          <div class="a">
+            Importa. A jornada deve ser cumprida <b>no horário cadastrado/autorizado</b>. Cumprir horas fora do horário definido sem autorização pode caracterizar descumprimento do normativo, mesmo que some 8h.
+            <div class="base"><b>Base:</b> Norma (critérios gerais e jornada, p. 2) • Manual (Registro de Frequência, p. 6).</div>
+          </div>
+        </details>
+
+        <!-- Intervalo -->
+        <details data-cat="intervalo">
+          <summary><span class="q">“Posso reduzir meu intervalo para sair mais cedo?”</span><span class="tag">Intervalo</span></summary>
+          <div class="a">
+            Não. É vedado compensar atraso ou saída antecipada reduzindo intervalo intrajornada. Intervalo é direito e também obrigação de controle da empresa.
+            <div class="base"><b>Base:</b> Manual (Observações Importantes, p. 9) • Norma (intervalo intrajornada e efeitos da supressão, p. 3) • CLT art. 71.</div>
+          </div>
+        </details>
+
+        <details data-cat="intervalo">
+          <summary><span class="q">“Se eu não fizer o intervalo completo, posso compensar depois?”</span><span class="tag">Intervalo</span></summary>
+          <div class="a">
+            Não. Intervalo deve ser usufruído e registrado no momento correto. A inobservância pode gerar repercussões (inclusive indenizatórias) e apuração de descumprimento.
+            <div class="base"><b>Base:</b> Norma (Art. 3º, §§ 1º e 2º, p. 3) • Manual (Observações Importantes, p. 9).</div>
+          </div>
+        </details>
+
+        <!-- Tolerância -->
+        <details data-cat="tolerancia">
+          <summary><span class="q">“A tolerância de 15 minutos me permite entrar mais tarde ou sair mais cedo todo dia?”</span><span class="tag">Tolerância</span></summary>
+          <div class="a">
+            Não. A tolerância existe para evitar validações pontuais no sistema e não pode virar prática habitual/planejada. Em nenhuma hipótese ela exime o cumprimento da carga horária, nem autoriza acumular minutos/horas indevidamente.
+            <div class="base"><b>Base:</b> Norma (Art. 2º, §§ 3º e 4º, p. 2) • Manual (Tolerância, p. 7) • CLT art. 58, §1º (5 min por batida, limite 10 min/dia).</div>
+          </div>
+        </details>
+
+        <details data-cat="tolerancia">
+          <summary><span class="q">“Se o sistema aceita o registro, então está permitido, certo?”</span><span class="tag">Tolerância</span></summary>
+          <div class="a">
+            Não. O sistema registra; ele não autoriza condutas. A regra é cumprir a jornada cadastrada e usar a tolerância apenas como margem técnica do registro, sem gerar saldo indevido.
+            <div class="base"><b>Base:</b> Norma (Art. 2º, §4º, p. 2) • Manual (Tolerância, p. 7).</div>
+          </div>
+        </details>
+
+        <!-- Registro/Ponto -->
+        <details data-cat="ponto">
+          <summary><span class="q">“Se eu esquecer de bater ponto, como faço? Posso pedir para alguém registrar por mim?”</span><span class="tag">Registro/Ponto</span></summary>
+          <div class="a">
+            O registro deve ser feito pelo próprio empregado. Se esquecer, deve abrir <b>Ajuste de Ponto</b> no dia útil seguinte, informando o horário praticado e comunicando o gestor para validação, quando cabível. Registrar por terceiro é falta grave.
+            <div class="base"><b>Base:</b> Manual (Ajuste de ponto e vedações, p. 7 e p. 4) • Norma (registro obrigatório, p. 3).</div>
+          </div>
+        </details>
+
+        <details data-cat="ponto">
+          <summary><span class="q">“Quantas vezes eu devo bater ponto por dia?”</span><span class="tag">Registro/Ponto</span></summary>
+          <div class="a">
+            Depende da jornada (entrada, intervalos e saída). O registro deve abranger entradas/saídas e quaisquer interrupções, atrasos ou saídas antecipadas.
+            <div class="base"><b>Base:</b> Manual (Tabela de batidas por jornada, p. 6) • Norma (registro obrigatório e abrangência, p. 3).</div>
+          </div>
+        </details>
+
+        <!-- Conduta / Responsabilização -->
+        <details data-cat="conduta">
+          <summary><span class="q">“Quais as consequências de descumprir jornada/intervalo/tolerância de forma repetida?”</span><span class="tag">Conduta</span></summary>
+          <div class="a">
+            A conduta reiterada e injustificada gera orientação e registro de ocorrência; pode haver notificação verbal e escrita e, em caso de reincidência, encaminhamento ao CCE, conforme o fluxo do gestor e normas internas.
+            <div class="base"><b>Base:</b> Manual (Responsabilidades do gestor: notificar e encaminhar ao CCE, p. 5) • Manual (vedações do empregado: descumprir expediente/jornada/intervalo, p. 4).</div>
+          </div>
+        </details>
+
+        <details data-cat="conduta">
+          <summary><span class="q">“A responsabilidade é só do gestor?”</span><span class="tag">Conduta</span></summary>
+          <div class="a">
+            Não. O empregado é responsável por registrar fielmente sua frequência e cumprir jornada e intervalos. O gestor tem dever de monitorar, orientar e não validar irregularidades.
+            <div class="base"><b>Base:</b> Manual (Responsabilidades e vedações do empregado, p. 4) • Manual (Responsabilidades e vedações do gestor, p. 5).</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="empty" id="empty">Nenhum item encontrado com os filtros atuais. Tente remover algum filtro ou mudar o termo de busca.</div>
+
+      <p class="sub muted" style="margin-top:12px;">
+        Dica: durante a reunião, use a busca por “tolerância”, “intervalo” ou “ponto” e abra os tópicos conforme surgirem.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const q = document.getElementById("q");
+      const list = document.getElementById("list");
+      const empty = document.getElementById("empty");
+      const filters = {
+        jornada: document.getElementById("fJornada"),
+        intervalo: document.getElementById("fIntervalo"),
+        tolerancia: document.getElementById("fTolerancia"),
+        ponto: document.getElementById("fPonto"),
+        conduta: document.getElementById("fConduta"),
+      };
+
+      function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu,""); }
+
+      function apply(){
+        const term = norm(q.value.trim());
+        let shown = 0;
+
+        [...list.querySelectorAll("details")].forEach(d => {
+          const cat = d.getAttribute("data-cat");
+          const okCat = filters[cat] ? filters[cat].checked : true;
+          const text = norm(d.innerText);
+          const okTerm = !term || text.includes(term);
+          const show = okCat && okTerm;
+          d.style.display = show ? "" : "none";
+          if (show) shown++;
+          if (!show) d.removeAttribute("open");
+        });
+
+        empty.style.display = shown ? "none" : "block";
+      }
+
+      q.addEventListener("input", apply);
+      Object.values(filters).forEach(cb => cb.addEventListener("change", apply));
+      apply();
+    })();
+  </script>
+</body>
+</html>
