@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Jornada, Intervalo e Tolerância</title>
+
+  <!-- Reaproveita o mesmo CSS do projeto + o CSS do Leitor Digital da Norma -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="faq_style.css">
+
+  <style>
+    /* Ajustes mínimos para rodar bem dentro do iframe/modal */
+    body {
+      background: var(--bg);
+    }
+
+    .container--fluid {
+      padding-top: 18px;
+    }
+
+    .hero__card h2 {
+      margin: 0 0 10px;
+    }
+
+    .faq-list {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    details.faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .faq-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tag-mini {
+      font-size: .78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(2, 132, 199, .08);
+      color: var(--brand-dark);
+    }
+
+    .faq-a {
+      padding: 0 14px 14px;
+      color: var(--text);
+    }
+
+    .faq-a p {
+      margin: 10px 0;
+    }
+
+    .base-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .base-pill {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .82rem;
+      cursor: pointer;
+    }
+
+    .base-pill:hover {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, .12);
+    }
+
+    .empty {
+      display: none;
+      margin-top: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .quick-pills.center-pills {
+      justify-content: center;
+    }
+
+    #faqTags .pill {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #faqTags .pill.pill--off {
+      opacity: .55;
+      filter: saturate(.6);
+    }
+
+    #faqTags .pill.pill--off:hover {
+      opacity: .85;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container container--fluid">
+    <section class="search-section">
+      <div class="card hero__card">
+        <h2 style="text-align:center; font-size: 1.2rem; border:none;">FAQ interativo — Jornada, Intervalo e Tolerância
+        </h2>
+        <p style="text-align:center; margin: 0 0 14px; color: var(--muted);">
+          Use a busca e os filtros para navegar. Linguagem de reunião (gestor ↔ empregados), com indicação de base
+          (Documento • Art/Cláusula • Página).
+        </p>
+
+        <div class="search-box-wrapper">
+          <input type="text" id="faqSearch" class="big-search"
+            placeholder="Pesquisar termo... (ex.: tolerância, intervalo, banco de horas)">
+          <div class="search-icon">🔍</div>
+        </div>
+
+        <!-- Pills no estilo do Leitor Digital -->
+        <div class="quick-pills center-pills" id="faqTags">
+          <button class="pill pill--action" data-filter="jornada" aria-pressed="true">Jornada</button>
+          <button class="pill pill--action" data-filter="intervalo" aria-pressed="true">Intervalo</button>
+          <button class="pill pill--action" data-filter="tolerancia" aria-pressed="true">Tolerância</button>
+          <button class="pill pill--action" data-filter="ponto" aria-pressed="true">Registro/Ponto</button>
+          <button class="pill pill--action" data-filter="banco" aria-pressed="true">Banco de Horas</button>
+          <button class="pill pill--action" data-filter="conduta" aria-pressed="true">Conduta</button>
+        </div>
+      </div>
+
+      <div id="faqList" class="faq-list"></div>
+      <div id="faqEmpty" class="empty">Nenhum item encontrado com esses filtros.</div>
+    </section>
+  </main>
+
+  <script>
+    // =========================================================
+    // Dados do FAQ (reunião)
+    // =========================================================
+    const FAQ = [
+      {
+        cat: "jornada",
+        q: "“Minha jornada é flexível? Posso entrar e sair em horários diferentes todos os dias?”",
+        a: `
+          <p><b>Resposta:</b> Caberá ao gestor autorizar a flexibilidade de horário e definir,
+          dentre os horários de trabalho previamente estipulados pela
+          Administração, o que seja melhor aplicável entre cada empregado de sua
+          equipe, de modo a garantir o regular funcionamento do setor no
+          horário administrativo da CAERN.</p>
+          
+          <p><b>Orientação:</b> A flexibilidade não é automática nem definitiva. Depende de autorização do gestor, conforme horários previamente estipulados e garantindo o funcionamento do setor.</p>
+
+          <p><b>Entendimento:</b> Não existe liberdade para o empregado definir horários de forma unilateral.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Flexibilidade (pág. 8)", file: "Manual.pdf", page: 8 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Se eu cumprir as 8 horas no dia, importa o horário que eu entrei?”",
+        a: `
+          <p><b>Resposta:</b> Sim. A jornada deve ser cumprida dentro do horário cadastrado/autorizado. Cumprimento fora do horário sem autorização pode caracterizar desconformidade, mesmo com total diário atingido.</p>
+          <p><b>Entendimento:</b> Registrar fielmente a sua frequência e eventuais incidentes no sistema adotado, de acordo com sua jornada cadastrada, inclusive os intervalos correspondentes.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Registro de frequência (pág. 6–7)", file: "Manual.pdf", page: 6 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Posso reduzir meu intervalo para sair mais cedo?”",
+        a: `
+          <p><b>Resposta:</b> Não. É vedado compensar atrasos/saídas antecipadas reduzindo o intervalo intrajornada. O intervalo é regra prevista na CLT e no normativo interno.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações importantes (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Se eu não fizer o intervalo completo, posso compensar depois?”",
+        a: `
+          <p><b>Resposta:</b> Não. O intervalo deve ser cumprido conforme jornada definida. A fruição parcial/indevida pode ensejar apuração de descumprimento do normativo e da CLT.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações importantes (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“A tolerância de 15 minutos me permite entrar mais tarde ou sair mais cedo todo dia?”",
+        a: `
+          <p><b>Resposta:</b> Não. A tolerância existe para evitar validações pontuais no sistema. Em nenhuma hipótese exime o empregado de cumprir a jornada cadastrada, nem autoriza uso habitual para acumular saldo/minutos indevidos.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância 15min / CLT art. 58 §1º (pág. 7)", file: "Manual.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Se o sistema aceita o registro, então está permitido, certo?”",
+        a: `
+          <p><b>Resposta:</b> Não. O sistema registra; ele não autoriza condutas irregulares. O uso reiterado e estratégico da tolerância pode ser tratado como desconformidade e conduta indevida.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância / responsabilização (pág. 7)", file: "Manual.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Se eu esquecer de bater ponto, como faço? Posso pedir para alguém registrar por mim?”",
+        a: `
+          <p><b>Resposta:</b> Deve ser criado um ajuste de ponto até o dia útil seguinte, informando o horário praticado e comunicando ao gestor. É vedado registro por terceiros (falta grave).</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Ajuste de ponto / vedação (pág. 6–7)", file: "Manual.pdf", page: 6 },
+          { doc: "Manual", label: "Manual — Vedação: ponto por terceiros (pág. 4)", file: "Manual.pdf", page: 4 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Quantas vezes eu devo bater ponto por dia?”",
+        a: `
+          <p><b>Resposta:</b> Depende da jornada. Para jornada acima de 4h e escalas 12x36, normalmente: entrada, início do intervalo, volta do intervalo e saída. Há regras específicas para 24x72.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Quantidade de marcações (pág. 6)", file: "Manual.pdf", page: 6 },
+        ]
+      },
+      {
+        cat: "conduta",
+        q: "“Quais as consequências de descumprir jornada/intervalo/tolerância de forma repetida?”",
+        a: `
+          <p><b>Resposta:</b> O gestor deve orientar e notificar (verbal e por escrito em reincidência). Casos reincidentes podem ser encaminhados ao Comitê de Conduta, Integridade e Ética (CCE), conforme normativos internos.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Responsabilidades do gestor (pág. 5)", file: "Manual.pdf", page: 5 },
+          { doc: "Manual", label: "Manual — Vedações/descumprimentos reiterados (pág. 4)", file: "Manual.pdf", page: 4 },
+        ]
+      },
+
+
+      // =========================
+      // RODADA 2 — foco: Jornada, Intervalos e Tolerância (15 min)
+      // =========================
+      {
+        cat: "jornada",
+        q: "“Posso mudar meu horário de entrada/saída por conta própria (sem avisar) se eu ‘compensar’ depois?”",
+        a: `
+          <p><b>Resposta:</b> Não. Alteração de horário/jornada precisa de <b>alinhamento e autorização da chefia</b>. “Compensar depois” sem acordo prévio não regulariza descumprimento do horário.</p>
+          <p><b>Orientação:</b> Se houver necessidade pontual, comunique e registre conforme orientação do gestor.</p>
+          <p><b>Sugestões:</b> Verificar a possibilidade de flexibilidade de horário com o gestor.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Jornada/horários e alinhamento com gestor (pág. 8–9)", file: "Manual.pdf", page: 8 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Se eu entrar mais cedo, posso sair mais cedo no mesmo dia para ‘equilibrar’?”",
+        a: `
+          <p><b>Resposta:</b> Não. Entrada antecipada ou saída antecipada não é livre: deve respeitar a jornada cadastrada.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Jornada padrão e organização do setor (pág. 8)", file: "Manual.pdf", page: 8 },
+          { doc: "Manual", label: "Manual — Banco de horas exige alinhamento (pág. 13)", file: "Manual.pdf", page: 13 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Meu setor pode exigir que eu esteja presente em horários específicos (ex.: manhã/tarde)?”",
+        a: `
+          <p><b>Resposta:</b> Sim. A chefia pode estabelecer faixas de presença mínima/organização do trabalho, para garantir atendimento, continuidade e funcionamento do setor.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Presença mínima / jornada 40h (pág. 11)", file: "Manual.pdf", page: 11 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“A jornada é 8h. Posso ‘juntar’ minutos durante a semana para folgar um dia?”",
+        a: `
+          <p><b>Resposta:</b> Não automaticamente. Folga/compensação depende das regras aplicáveis (banco de horas, escalas, acordos) e <b>autorização do gestor</b>. Acúmulos informais não geram direito automático a folga.</p>
+          <p><b>Orientação:</b> Encaminhar para o Comitê de Conduta, Integridade e Ética (CCE) casos reincidentes de descumprimento, após a notificação por escrito.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Banco de horas: regras e validação (pág. 13–14)", file: "Manual.pdf", page: 13 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Se eu ficar ‘no posto’, posso considerar que cumpri intervalo?”",
+        a: `
+          <p><b>Resposta:</b> Em regra, não. Intervalo intrajornada é tempo destinado a repouso/alimentação, com <b>interrupção</b> da jornada. Permanecer executando atividades descaracteriza o intervalo.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações importantes sobre intervalo (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Posso dividir o intervalo em vários pedaços (ex.: 30min + 30min)?”",
+        a: `
+          <p><b>Resposta:</b> Não como regra geral. O intervalo deve seguir o padrão definido para a jornada. Fracionamento só ocorre quando houver previsão específica em acordo coletivo.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Intervalo conforme padrão (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Posso fazer intervalo menor porque ‘hoje tá corrido’ e compensar amanhã?”",
+        a: `
+          <p><b>Resposta:</b> Não. Intervalo é obrigação diária conforme jornada. Reduzir por conveniência ou rotina do dia é descumprimento.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Intervalo: vedação de redução para compensar (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“E se o meu intervalo for interrompido por necessidade do serviço?”",
+        a: `
+          <p><b>Resposta:</b> Situações excepcionais devem ser <b>registradas e comunicadas</b> ao gestor. O correto é recompor o intervalo conforme orientação do setor e registrar adequadamente.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Situações excepcionais / orientação do gestor (pág. 9)", file: "Manual.pdf", page: 9 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“A tolerância de 15 minutos vale ‘15 na entrada e 15 na saída’ todo dia?”",
+        a: `
+          <p><b>Resposta:</b> Não. A tolerância é para <b>variações pontuais</b> e não para uso habitual. Utilizar como rotina para entrar mais tarde e sair mais cedo (ou vice-versa) descaracteriza a finalidade e pode ser apurado como irregularidade.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância: finalidade e limites (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Uso contínuo/indevido para gerar saldo (pág. 7)", file: "Norma.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Se eu atrasar 10 min e depois ficar 10 min a mais, está ‘quitado’ pela tolerância?”",
+        a: `
+          <p><b>Resposta:</b> Não automaticamente. A tolerância não é um ‘crédito’ para compensar atrasos de forma rotineira. A jornada deve ser cumprida no horário e ajustes devem ser alinhados com a chefia quando necessários.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância não é compensação livre (pág. 7)", file: "Manual.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Se eu usar a tolerância todo dia, isso é permitido?”",
+        a: `
+          <p><b>Resposta:</b> Não. O uso reiterado da tolerância descaracteriza sua finalidade de variação pontual. Uso habitual pode ser tratado como desconformidade e conduta indevida.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância / responsabilização (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Art. 29 (apuração/encaminhamentos) (pág. 7)", file: "Norma.pdf", page: 7 },
+        ]
+      },
+
+
+      // =========================
+      // + NOVOS ITENS (Gemini)
+      // =========================
+
+
+
+      {
+        cat: "banco_horas",
+        q: "“Posso acumular horas extras à vontade para tirar folgas longas depois?”",
+        a: `
+      <p><b>Resposta:</b> Não. Existe um teto de acúmulo.</p>
+      <p>O limite máximo de saldo positivo no Banco de Horas é de <b>10 horas</b>. Se você atingir esse limite, é <b>obrigatório</b> compensar (folgar) antes de realizar novas horas extras. O sistema e a gestão devem bloquear novas horas até a regularização.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações do Banco (pág. 14)", file: "Manual.pdf", page: 14 },
+          { doc: "Norma", label: "Norma — Art. 25", file: "Norma.pdf", page: 7 }
+        ]
+      },
+      {
+        cat: "ausencia",
+        q: "“Preciso resolver um problema particular urgente. Posso usar meu Banco de Horas?”",
+        a: `
+      <p><b>Resposta:</b> Depende do saldo, mas você tem uma verba específica para isso.</p>
+      <p>A CAERN concede a <b>Ausência de Interesse Pessoal</b> (limite de 72h por ano para quem trabalha 40h semanais). Essa ausência:</p>
+      <ul>
+        <li>Deve ser acordada previamente com a chefia.</li>
+        <li>Não acumula para o ano seguinte.</li>
+        <li>Evita que você mexa no seu Banco de Horas ou tenha desconto em folha.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Ausência de Interesse Pessoal (pág. 23)", file: "Manual.pdf", page: 23 },
+          { doc: "Acordo", label: "ACT — Cláusula 10ª, Item VI", file: "Acordo.pdf", page: 12 }
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Vou viajar a trabalho pela empresa. O tempo de estrada conta como hora extra?”",
+        a: `
+      <p><b>Resposta:</b> Sim, conta como jornada efetiva.</p>
+      <p>O tempo é computado desde a <b>saída do local de trabalho de origem</b> até o término da viagem ou atividade naquele dia. Porém, atenção:</p>
+      <ul>
+        <li>Se houver pernoite, a contagem para e só recomeça quando você chegar ao local de trabalho no dia seguinte.</li>
+        <li>Deslocamento hotel-trabalho não conta como jornada.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Viagens e Atividades Externas (pág. 17)", file: "Manual.pdf", page: 17 },
+          { doc: "Norma", label: "Norma — Art. 34 e § 2º", file: "Norma.pdf", page: 8 }
+        ]
+      },
+      {
+        cat: "escala",
+        q: "“Trabalho em escala (12x36 ou 24x72). Posso trocar meu plantão com um colega?”",
+        a: `
+      <p><b>Resposta:</b> Sim, mas com regras rígidas para não gerar passivo.</p>
+      <ul>
+        <li><b>Limite:</b> 1 troca por mês por solicitante.</li>
+        <li><b>Aviso:</b> Antecedência mínima de 5 dias.</li>
+        <li><b>Restrição:</b> Não pode gerar dobra de serviço (deve respeitar a interjornada mínima de 12h ou 24h, dependendo da escala).</li>
+        <li><b>Equipe:</b> A troca deve ser entre empregados da mesma equipe/posto.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Troca de Serviço (pág. 15)", file: "Manual.pdf", page: 15 },
+          { doc: "Norma", label: "Norma — Art. 52", file: "Norma.pdf", page: 10 }
+        ]
+      },
+      {
+        cat: "atestado",
+        q: "“Fiquei doente e peguei um atestado. Tenho até o fim do mês para entregar?”",
+        a: `
+      <p><b>Resposta:</b> Não. O prazo é curto.</p>
+      <p>Você deve enviar o atestado para o e-mail oficial (<code>atestadomedico@caern.com.br</code>) em até <b>48 horas</b> da data de emissão. Atrasos podem comprometer a justificativa do ponto.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Atestado Médico (pág. 27)", file: "Manual.pdf", page: 27 },
+          { doc: "Norma", label: "Norma — Quadro de Ocorrências (pág. 27 do PDF original)", file: "Manual.pdf", page: 27 }
+        ]
+      },
+      {
+        cat: "sobreaviso",
+        q: "“Fiquei de sobreaviso o fim de semana todo. Vou receber tudo como hora extra?”",
+        a: `
+      <p><b>Resposta:</b> Não confunda <b>Sobreaviso</b> com <b>Hora Extra</b>.</p>
+      <ul>
+        <li><b>Enquanto aguarda:</b> Recebe 1/3 do valor da hora normal (Regime de Sobreaviso).</li>
+        <li><b>Se for acionado:</b> A partir do momento que começa a trabalhar, recebe como Hora Extra efetiva.</li>
+        <li>O limite máximo de escala de sobreaviso é de 12h contínuas.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Regime de Sobreaviso (pág. 16)", file: "Manual.pdf", page: 16 },
+          { doc: "Norma", label: "Norma — Art. 44 e 45", file: "Norma.pdf", page: 9 }
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Tenho um filho com deficiência. Tenho direito a horário especial?”",
+        a: `
+      <p><b>Resposta:</b> Sim, garantido pelo ACT.</p>
+      <p>Empregados com filhos com deficiência (comprovada por laudo e necessidade de tratamento) têm jornada reduzida para <b>6h diárias (30h semanais)</b>. Importante:</p>
+      <ul>
+        <li>É vedado fazer horas extras ou compensação de jornada nessa condição.</li>
+        <li>Se ambos os pais forem da CAERN, apenas um terá o benefício.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Redução de Jornada (pág. 10)", file: "Manual.pdf", page: 10 },
+          { doc: "Acordo", label: "ACT — Cláusula 14ª, Parágrafo 10º", file: "Acordo.pdf", page: 16 }
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Bati o ponto de volta do almoço com 50 minutos. Tem problema?”",
+        a: `
+      <p><b>Resposta:</b> Sim. Isso gera <b>supressão de intervalo</b>.</p>
+      <p>Para jornadas de 8h, o intervalo mínimo por lei e norma é de <b>01 hora</b>. Registrar menos que isso (ex: 50min) viola a norma de saúde e segurança, gerando passivo trabalhista (pagamento de multa/indenização) e responsabilização disciplinar.</p>
+      <p><b>Orientação:</b> Cada tipo de jornada possui os limites de intervalos predefinidos.</p>
+
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Intervalo Intrajornada (pág. 9)", file: "Manual.pdf", page: 9 },
+          { doc: "Norma", label: "Norma — Art. 3º, Inciso I", file: "Norma.pdf", page: 3 }
+        ]
+      },
+      {
+        cat: "treinamento",
+        q: "“A empresa me mandou para um curso. Isso conta como hora trabalhada?”",
+        a: `
+      <p><b>Resposta:</b> Sim, se for obrigatório/determinado pela CAERN.</p>
+      <p>Cursos e treinamentos exigidos pela empresa contam como jornada efetiva. Se ultrapassar seu horário normal, gera hora extra ou banco.</p>
+      <p><b>Atenção:</b> Cursos opcionais ou de interesse pessoal, mesmo que autorizados, não geram hora extra nem contam como jornada (salvo acordo específico de compensação).</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Cursos e Treinamentos (pág. 17)", file: "Manual.pdf", page: 17 },
+          { doc: "Norma", label: "Norma — Art. 39", file: "Norma.pdf", page: 8 }
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Uso os 15 minutos de tolerância todo dia para sair mais cedo. Posso?”",
+        a: `
+      <p><b>Resposta:</b> Não. Isso é uso indevido da regra.</p>
+      <p>A tolerância de 15 minutos existe para evitar burocracia em imprevistos eventuais, não para reduzir sua jornada diariamente. O uso contínuo da tolerância para gerar saldo (positivo ou negativo) é passível de apuração e medida disciplinar.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações Importantes (pág. 14)", file: "Manual.pdf", page: 14 },
+          { doc: "Norma", label: "Norma — Art. 2º, § 3º", file: "Norma.pdf", page: 2 }
+        ]
+      },
+
+
+
+      {
+        cat: "tolerancia",
+        q: "“O sistema deixa eu marcar até 15 minutos depois. Então tenho 15 minutos de tolerância todo dia?”",
+        a: `
+      <p><b>Resposta:</b> Não. Cuidado com essa confusão!</p>
+      <p>A tolerância de <b>15 minutos</b> serve apenas para que o sistema não exija a validação manual do seu gestor (evitar burocracia). Porém, para fins de <b>contagem de horas trabalhadas</b> (pagamento ou desconto), vale a regra da CLT (Art. 58):</p>
+      <ul>
+        <li>Tolerância máxima de <b>5 minutos</b> por batida.</li>
+        <li>Limite máximo de <b>10 minutos</b> diários (somando atrasos e saídas).</li>
+      </ul>
+      <p>Se você chegar 15 minutos atrasado, o sistema aceita o registro, mas você terá um saldo negativo de 15 minutos naquele dia para compensar.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância de Ponto (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Art. 2º, §§ 2º e 3º", file: "Norma.pdf", page: 2 }
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Esqueci de registrar o ponto. Posso pedir para o meu gestor ajustar a qualquer momento?”",
+        a: `
+      <p><b>Resposta:</b> Não é "a qualquer momento". Existe um prazo e um limite.</p>
+      <p>Você deve solicitar o <b>Ajuste de Ponto</b> até o <b>dia útil seguinte</b> ao esquecimento. Além disso, fique atento ao limite de reincidência:</p>
+      <ul>
+        <li>O gestor só pode validar justificativas de "Esquecimento" até <b>4 vezes no mês</b>.</li>
+        <li>Acima disso, haverá medida disciplinar para apuração, podendo haver responsabilização.</li>
+      </ul>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — O que fazer ao esquecer (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Art. 7º, §§ 3º e 4º", file: "Norma.pdf", page: 4 }
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Posso fazer só 30 minutos de almoço para sair mais cedo no final do dia?”",
+        a: `
+      <p><b>Resposta:</b> Não. O intervalo intrajornada é uma norma de saúde e segurança.</p>
+      <ul>
+        <li>Para jornadas acima de 6h, o intervalo mínimo obrigatório é de <b>01 hora</b> (e máximo de 02h).</li>
+        <li>É <b>proibido</b> compensar atrasos ou saídas antecipadas reduzindo o horário de almoço.</li>
+      </ul>
+      <p>A única exceção é se houver um acordo de "Flexibilidade" formalizado e autorizado, mas nunca inferior a 1h para jornadas de 8h.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações Importantes (pág. 8)", file: "Manual.pdf", page: 8 },
+          { doc: "Norma", label: "Norma — Art. 3º", file: "Norma.pdf", page: 3 }
+        ]
+      },
+      {
+        cat: "banco_horas",
+        q: "“Estou com horas negativas no Banco. Tenho quanto tempo para pagar?”",
+        a: `
+      <p><b>Resposta:</b> O prazo para saldo negativo é curto.</p>
+      <ul>
+        <li><b>Saldo Negativo:</b> Deve ser compensado até o <b>mês subsequente</b> ao da ocorrência.</li>
+        <li><b>Saldo Positivo:</b> Pode ser compensado (folga) em até <b>6 meses</b>.</li>
+      </ul>
+      <p>Lembre-se: toda compensação (fazer hora extra para pagar o negativo ou folgar para gastar o positivo) deve ser previamente alinhada com a chefia imediata.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Compensação do Banco de Horas (pág. 11)", file: "Manual.pdf", page: 11 }
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Cheguei 30 minutos mais cedo por causa do ônibus. Já conta como hora extra?”",
+        a: `
+      <p><b>Resposta:</b> Apenas a presença na empresa não garante hora extra.</p>
+      <p>Para ser considerada hora extra (ou crédito no banco), o trabalho deve ter sido <b>solicitado e autorizado</b> pelo gestor por "estrita necessidade do serviço".</p>
+      <p>Permanecer na empresa para atividades particulares, descanso, lazer ou aguardando transporte não conta como jornada de trabalho (Art. 5º da Norma).</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Horas Extras: Premissas (pág. 10)", file: "Manual.pdf", page: 10 },
+          { doc: "Norma", label: "Norma — Art. 5º, Inciso II", file: "Norma.pdf", page: 3 }
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Trabalhei até tarde e preciso voltar cedo amanhã. Qual o intervalo mínimo entre um dia e outro?”",
+        a: `
+      <p><b>Resposta:</b> Você deve respeitar a <b>Interjornada</b> de 11 horas.</p>
+      <p>Entre o fim de uma jornada e o início da outra, deve haver um descanso mínimo de <b>11 horas consecutivas</b>. O desrespeito a esse intervalo gera passivo trabalhista e é vedado aos gestores permitirem tal prática.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Observações (pág. 8)", file: "Manual.pdf", page: 8 },
+          { doc: "Norma", label: "Norma — Art. 4º", file: "Norma.pdf", page: 3 }
+        ]
+      },
+
+
+      {
+        cat: "jornada",
+        q: "“Quem escolhe meu horário flexível? Eu ou meu chefe?”",
+        a: `
+      <p><b>Resposta:</b> O Gestor.</p>
+      <p>A flexibilidade de horário (ex: entrar 7h30 ou 8h00) não é uma escolha livre do empregado. Cabe ao <b>Gestor Imediato</b> definir e autorizar o horário, garantindo que o setor tenha cobertura durante todo o expediente administrativo da CAERN.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Flexibilidade (pág. 8)", file: "Manual.pdf", page: 8 },
+          { doc: "Norma", label: "Norma — Art. 16, § 5º", file: "Norma.pdf", page: 6 }
+        ]
+      },
+
+      {
+        cat: "jornada",
+        q: "“Posso pedir para um colega bater meu ponto se eu estiver chegando?”",
+        a: `
+      <p><b>Resposta:</b> JAMAIS. Isso é <b>Falta Grave</b>.</p>
+      <p>O registro de ponto por terceiros é estritamente proibido e pode levar à demissão por justa causa (inquérito administrativo), tanto para quem pediu quanto para quem registrou.</p>
+    `,
+        bases: [
+          { doc: "Manual", label: "Manual — Vedações (pág. 3)", file: "Manual.pdf", page: 3 },
+          { doc: "Norma", label: "Norma — Art. 53, Parágrafo Único", file: "Norma.pdf", page: 11 }
+        ]
+      },
+
+
+      {
+        cat: "intervalo",
+        q: "“Trabalho na escala 12x36. Tenho direito a 1 hora de almoço?”",
+        a: `
+      <p><b>Resposta:</b> Não, o intervalo é menor.</p>
+      <p>Para a escala <b>12x36</b>, o intervalo intrajornada é de <b>30 minutos</b>. A diferença (o tempo restante que completaria 1h) é paga como verba indenizatória, conforme o Acordo Coletivo.</p>
+    `,
+        bases: [
+          { doc: "Acordo", label: "ACT — Cláusula 14ª, Parágrafo 9º", file: "Acordo.pdf", page: 16 },
+          { doc: "Manual", label: "Manual — Observações Importantes (pág. 8)", file: "Manual.pdf", page: 8 }
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Trabalho na escala 24x72. Quantas vezes preciso bater o ponto?”",
+        a: `
+      <p><b>Resposta:</b> Você deve registrar o ponto <b>6 vezes</b> por plantão.</p>
+      <p>Como o plantão é longo, você tem dois intervalos obrigatórios. Os registros são:</p>
+      <ol>
+        <li>Início da Jornada</li>
+        <li>Saída para 1º Intervalo</li>
+        <li>Volta do 1º Intervalo</li>
+        <li>Saída para 2º Intervalo</li>
+        <li>Volta do 2º Intervalo</li>
+        <li>Fim da Jornada</li>
+      </ol>
+    `,
+        bases: [
+          { doc: "Norma", label: "Norma — Art. 7º, Inciso III", file: "Norma.pdf", page: 3 },
+          { doc: "Manual", label: "Manual — Tabela de Registros (pág. 6)", file: "Manual.pdf", page: 6 }
+        ]
+      },
+
+      {
+        cat: "tolerancia",
+        q: "“Se eu chegar 5 minutos atrasado todo dia, sou descontado?”",
+        a: `
+      <p><b>Resposta:</b> Pela regra da CLT, atrasos de até 5 minutos não são descontados.</p>
+      <p><b>Mas atenção:</b> O limite máximo de tolerância diária é de <b>10 minutos</b> (somando entradas e saídas). Se você atrasar 5 min na entrada e sair 6 min antes, totaliza 11 min. Nesse caso, <b>todos</b> os 11 minutos serão descontados (ou computados como banco negativo), não apenas o excedente.</p>
+      <p><b>Orientação:</b> A Consolidação das Leis do Trabalho (CLT), em seu artigo 58, § 1º, prevê uma margem de tolerância operacional, e não uma autorização para chegar atrasado todos os dias.</p>
+    `,
+        bases: [
+          { doc: "Norma", label: "Norma — Art. 2º, § 2º", file: "Norma.pdf", page: 2 },
+          { doc: "Manual", label: "Manual — Tolerância (pág. 7)", file: "Manual.pdf", page: 7 }
+        ]
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // =========================
+      // NOVOS ITENS (reunião)
+      // =========================
+      {
+        cat: "tolerancia",
+        q: "“Cheguei 20 minutos antes e o sistema registrou. Isso vira hora extra?”",
+        a: `
+          <p><b>Resposta:</b> Não automaticamente. A tolerância existe para variações pontuais. Para gerar saldo/hora extra é necessário ultrapassar os limites e, principalmente, <b>haver autorização e validação do gestor</b>.</p>
+          <p><b>Orientação:</b> Se houver necessidade real de antecipação/continuidade, alinhe com a chefia e registre corretamente.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância 15min (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Art. 29 (horas extras não autorizadas) (pág. 7)", file: "Norma.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "conduta",
+        q: "“Posso fazer hora extra por conta própria para ‘adiantar serviço’?”",
+        a: `
+          <p><b>Resposta:</b> Não. <b>Hora extra depende de necessidade do serviço e autorização prévia</b>. A realização sem autorização pode gerar orientação formal e outras providências internas.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Horas Extras / alinhamento com gestor (pág. 12)", file: "Manual.pdf", page: 12 },
+          { doc: "Norma", label: "Norma — Art. 29 (horas extras não autorizadas) (pág. 7)", file: "Norma.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "tolerancia",
+        q: "“Se eu usar a tolerância todo dia para entrar antes e sair depois, isso é permitido?”",
+        a: `
+          <p><b>Resposta:</b> Não. O uso <b>habitual e estratégico</b> da tolerância para produzir saldo é indevido. A tolerância é para situações pontuais, não para alterar (deslocar) a jornada padrão diariamente.</p>
+          <p><b>Orientação:</b> A Consolidação das Leis do Trabalho (CLT), em seu artigo 58, § 1º, prevê uma margem de tolerância operacional, e não uma autorização para chegar atrasado todos os dias.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Tolerância / responsabilização (pág. 7)", file: "Manual.pdf", page: 7 },
+          { doc: "Norma", label: "Norma — Art. 29 (apuração/encaminhamentos) (pág. 7)", file: "Norma.pdf", page: 7 },
+        ]
+      },
+      {
+        cat: "jornada",
+        q: "“Quais são os horários mínimos de presença no setor (jornada 40h)?”",
+        a: `
+          <p><b>Resposta:</b> Para equipes com jornada de 40h e banco de horas, há referência de presença mínima de equipes efetivas em faixas de funcionamento do setor. Ajustes devem ser combinados com a chefia para não prejudicar o atendimento/rotina.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Presença mínima / jornada 40h (pág. 11)", file: "Manual.pdf", page: 11 },
+        ]
+      },
+      {
+        cat: "banco",
+        q: "“Como funciona o Banco de Horas (quem se aplica)?”",
+        a: `
+          <p><b>Resposta:</b> O banco de horas é o regime em que o saldo (positivo/negativo) é controlado e depois compensado, conforme regras e grupo de regra definido.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Aplicação do Banco de Horas (pág. 8)", file: "Manual.pdf", page: 8 },
+        ]
+      },
+      {
+        cat: "banco",
+        q: "“Tenho saldo positivo: qual o prazo e como compensar?”",
+        a: `
+          <p><b>Resposta:</b> O saldo positivo deve ser compensado dentro do prazo previsto. A compensação ocorre por redução parcial ou integral da jornada, sempre <b>alinhada previamente com a chefia</b>.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Compensação do Banco (saldo positivo) (pág. 13)", file: "Manual.pdf", page: 13 },
+        ]
+      },
+      {
+        cat: "banco",
+        q: "“Tenho saldo negativo: como regularizar?”",
+        a: `
+          <p><b>Resposta:</b> O saldo negativo deve ser compensado conforme prazo previsto, normalmente por realização de horas extras, <b>com autorização prévia</b>.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Compensação do Banco (saldo negativo) (pág. 13)", file: "Manual.pdf", page: 13 },
+        ]
+      },
+
+      {
+        cat: "banco",
+        q: "Cheguei tarde e fiquei com saldo negativo: como regularizar?",
+        a: `
+          <p><b>Resposta:</b> O saldo negativo deve ser compensado de dois modos: 1 - Realização de horas extras, autorizadas pela chefia, <b>com autorização prévia</b>. 2 - Pagamento em pecúnia, com desconto no contracheque. O saldo negativo deve ser compensado conforme prazo previsto.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Compensação do Banco (saldo negativo) (pág. 13)", file: "Manual.pdf", page: 13 },
+        ]
+      },
+
+      {
+        cat: "banco",
+        q: "“Existe limite de acúmulo no Banco de Horas?”",
+        a: `
+          <p><b>Resposta:</b> Sim. Existe limite para saldo positivo. Ao atingir o teto, é necessário compensar antes de realizar novas horas extras.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Limite de acúmulo / Observações importantes (pág. 14)", file: "Manual.pdf", page: 14 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“Qual é o intervalo intrajornada mínimo (jornada acima de 6h)?”",
+        a: `
+          <p><b>Resposta:</b> Para jornadas acima de 6h, o intervalo intrajornada segue o mínimo previsto. A redução do intervalo só pode ocorrer dentro das hipóteses normativas (quando houver), e não por conveniência individual.</p>
+        `,
+        bases: [
+          { doc: "Norma", label: "Norma — Intervalo intrajornada (pág. 3)", file: "Norma.pdf", page: 3 },
+        ]
+      },
+      {
+        cat: "intervalo",
+        q: "“No 12x36, qual descanso mínimo entre jornadas?”",
+        a: `
+          <p><b>Resposta:</b> Deve ser respeitado o descanso mínimo entre uma jornada e outra. É responsabilidade do gestor e do empregado observar o intervalo interjornada.</p>
+        `,
+        bases: [
+          { doc: "Manual", label: "Manual — Intervalo mínimo na escala 12x36 (pág. 15)", file: "Manual.pdf", page: 15 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Posso registrar ponto pelo colega (ou deixar ele registrar por mim)?”",
+        a: `
+          <p><b>Resposta:</b> Não. É vedado o registro por terceiros. Caso esqueça, deve solicitar o ajuste conforme procedimento.</p>
+        `,
+        bases: [
+          { doc: "Norma", label: "Norma — Vedação: registro por terceiros (pág. 4)", file: "Norma.pdf", page: 4 },
+          { doc: "Manual", label: "Manual — Vedação: ponto por terceiros (pág. 4)", file: "Manual.pdf", page: 4 },
+        ]
+      },
+      {
+        cat: "ponto",
+        q: "“Trabalho externo: como registrar a jornada?”",
+        a: `
+          <p><b>Resposta:</b> O serviço externo deve ser autorizado pela chefia e o registro deve respeitar os critérios do normativo, inclusive registros de intervalos, quando aplicável.</p>
+        `,
+        bases: [
+          { doc: "Norma", label: "Norma — Serviço externo / autorização da chefia (pág. 8)", file: "Norma.pdf", page: 8 },
+        ]
+      }
+
+    ];
+
+    function norm(s) {
+      return (s || "").toLowerCase()
+        .normalize("NFD").replaceAll(/\p{Diacritic}/gu, "")
+        .trim();
+    }
+
+    // Render
+    const list = document.getElementById("faqList");
+    const empty = document.getElementById("faqEmpty");
+    const q = document.getElementById("faqSearch");
+    const tagWrap = document.getElementById("faqTags");
+    const allCats = ["jornada", "intervalo", "tolerancia", "ponto", "banco", "conduta"];
+    const active = new Set(allCats);
+
+    function render(items) {
+      list.innerHTML = items.map(it => {
+        const bases = (it.bases || []).map(b => {
+          // PDFs na raiz do projeto (mesmo nível do index.html). O iframe está em /bh_tolerancia/
+          // então subimos 1 nível.
+          const href = `../assets/${b.file}#page=${b.page}`;
+          return `<a class="base-pill" href="${href}" target="_blank" rel="noopener noreferrer" title="Abrir PDF na página ${b.page}">${b.label}</a>`;
+        }).join("");
+
+        const tagLabel = it.cat === "ponto" ? "Registro/Ponto" : (it.cat.charAt(0).toUpperCase() + it.cat.slice(1));
+        return `
+          <details class="faq-item" data-cat="${it.cat}">
+            <summary>
+              <div class="faq-q">${it.q}</div>
+              <div class="faq-meta">
+                <span class="tag-mini">${tagLabel}</span>
+              </div>
+            </summary>
+            <div class="faq-a">
+              ${it.a}
+              <div class="base-pills">${bases}</div>
+            </div>
+          </details>
+        `;
+      }).join("");
+    }
+
+    function apply() {
+      const term = norm(q.value);
+      let shown = 0;
+
+      const hasAny = active.size > 0;
+
+      const filtered = FAQ.filter(it => {
+        const okCat = !hasAny || active.has(it.cat);
+        if (!okCat) return false;
+        if (!term) return true;
+        const hay = norm(it.q + " " + it.a + " " + (it.bases || []).map(b => b.label).join(" "));
+        return hay.includes(term);
+      });
+
+      render(filtered);
+      shown = filtered.length;
+      empty.style.display = shown ? "none" : "block";
+    }
+
+    // Pills toggle (mesma UX do leitor)
+    // Regras:
+    // - Sempre clicável (mesmo quando "desligado")
+    // - Visual muda via aria-pressed + classe .pill--off
+    tagWrap.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-filter]");
+      if (!btn) return;
+
+      const key = btn.dataset.filter;
+      const isOn = btn.getAttribute("aria-pressed") === "true";
+      const next = !isOn;
+
+      btn.setAttribute("aria-pressed", String(next));
+      btn.classList.toggle("pill--off", !next);
+
+      if (next) active.add(key);
+      else active.delete(key);
+
+      apply();
+    });
+
+    q.addEventListener("input", apply);
+
+    // init
+    apply();
+  </script>
+</body>
+
+</html>

@@ -13,6 +13,53 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="bh_tolerancia/modal/bh_modal.css" />
 
+
+<!-- ===== Fluxo (Situações Excepcionais) — Modal local ===== -->
+<style id="flowExModalStyles">
+  /* Botão do fluxo */
+  .ex-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0 14px}
+  .ex-actions .hint{opacity:.75;font-size:.92rem}
+  .btn-flow{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
+    background:var(--btn-bg, #eef6ff);border:1px solid var(--btn-bd, #b6d8ff);font-weight:700;cursor:pointer}
+  .btn-flow:hover{filter:brightness(0.98)}
+  .btn-flow:active{transform:translateY(1px)}
+
+  /* Modal (local, sem dependências) */
+  .flowex-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;
+    align-items:center;justify-content:center;z-index:9999}
+  .flowex-modal{background:#fff;width:min(1100px,95vw);max-height:90vh;overflow:auto;
+    border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .flowex-header{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 18px;border-bottom:1px solid rgba(0,0,0,.08)}
+  .flowex-title{display:flex;align-items:center;gap:10px;font-weight:800}
+  .flowex-actions{display:flex;align-items:center;gap:10px}
+  .flowex-close{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;
+    border:1px solid rgba(0,0,0,.12);background:#fff;cursor:pointer;font-weight:700}
+  .flowex-close:hover{background:rgba(0,0,0,.03)}
+  .flowex-body{padding:18px}
+
+  /* Fluxograma (compacto e didático) */
+  .flow-stack{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .flow-branch{display:flex;gap:40px;align-items:flex-start;justify-content:center}
+  .flow-col{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:220px}
+  .flow-box{padding:12px 14px;border-radius:14px;text-align:center;font-size:.92rem;line-height:1.25;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.10);background:#fff}
+  .flow-neutral{background:#f1f3f5}
+  .flow-question{background:#eef6ff;border-color:#b6d8ff}
+  .flow-ok{background:#e6f4ea;border-color:#9fd6b3}
+  .flow-warn{background:#fff4e5;border-color:#ffd8a8}
+  .flow-danger{background:#fdecea;border-color:#f5b5b0}
+  .flow-arrow{opacity:.6;font-size:1.2rem}
+  .flow-rule{margin-top:14px;padding:12px 16px;border-radius:12px;background:#f6f7f9;
+    border:1px solid rgba(0,0,0,.08);text-align:center;max-width:920px;font-size:.92rem}
+
+  @media (max-width: 900px){
+    .flow-branch{flex-direction:column;gap:18px}
+    .flow-col{min-width:unset;width:100%}
+    .flow-box{width:100%}
+  }
+</style>
+
 </head>
 
 <body>
@@ -132,9 +179,11 @@
 
           <a href="leitor-norma/index.html" class="doc-link doc-link--anchor" style="border-color: var(--brand);">
             <div class="doc-icon">💻</div>
-            <strong>Leitor Digital da Norma</strong>
-            <span>Texto pesquisável</span>
-            <small>Acesse o texto integral, organizado e pesquisável</small>
+            <strong>Norma de Jornada</strong>
+            <span>NN.DD.P.A.06.0008.05</span>
+            <small>Digital</small>
+
+            <small>Norma organizada e pesquisável</small>
           </a>
 
 
@@ -208,7 +257,7 @@
         <div class="details-content">
           <div class="tablewrap">
             <div class="panel panel--info" style="margin-bottom: 20px;">
-              <div class="panel__title">📌 Intervalo: Saúde e Segurança (Não Negociável)</div>
+              <div class="panel__title">📌 "Intervalo é Saúde e Segurança: Direito irrenunciável e não negociável."</div>
 
               <div class="grid2" style="align-items: flex-start; margin-top: 10px;">
 
@@ -277,14 +326,33 @@
                     </p>
                   </div>
 
+
+
+
+
+                  <div class="panel panel--info" style="margin-top: 20px;">
+                    <div class="panel__title">📌 Orientação Geral</div>
+                    <div class="panel__text">
+                      Situações excepcionais existem, mas <strong>não substituem o cumprimento regular da jornada</strong>.
+                      <br><br>
+                      ✔️ Gestores devem planejar, autorizar e registrar.<br>
+                      ✔️ Empregados devem cumprir a jornada definida.<br><br>
+                      O Núcleo de Pessoal/RH está disponível para esclarecer dúvidas e apoiar na gestão adequada.
+                    </div>
+                  </div>
+
+
                   <div class="panel"
                     style="background: rgba(253, 230, 138, 0.1); border-color: var(--warn); padding: 12px;">
                     <strong style="color: var(--warn);">Conclusão:</strong>
                     <div class="micro-note" style="margin-top: 4px; font-size: 0.85rem; color: var(--text);">
                       Respeitar o intervalo protege a saúde do trabalhador e a sustentabilidade da empresa. <strong>Não
-                        gere passivos evitáveis.</strong>
+                        gere passivos evitáveis.</strong> 
+                        <br>
+
                     </div>
                   </div>
+
                 </div>
 
               </div>
@@ -346,60 +414,316 @@
         </div>
       </details>
 
+
+
+
       <details class="card">
         <summary>
           <h2>Situações Excepcionais</h2>
         </summary>
 
-        <div class="details-content">
+        
+<div class="details-content">
+  <div class="ex-actions">
+    <button type="button" class="btn-flow" id="btnOpenFlowEx" title="Abrir fluxograma em modal">
+      <span aria-hidden="true">🗺️</span>
+      <span>fluxograma (simples)</span>
+    </button>
+    <span class="hint">Abra o fluxograma para explicar a hierarquia (autorização → registro → regime formal → intervalo).</span>
+  </div>
+
+  <!-- Template do fluxograma (renderizado dentro do modal) -->
+  <div id="tplFlowExcepcionais" style="display:none;">
+    <div class="flow-stack">
+      <div class="flow-box flow-neutral">
+        👤 Convocação <b>EXCEPCIONAL</b><br>fora do regime cadastrado
+      </div>
+
+      <div class="flow-arrow">⬇️</div>
+
+      <div class="flow-box flow-question">
+        ⚠️ Houve <b>necessidade do serviço</b><br>e <b>autorização prévia</b> da chefia?
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-col">
+          <div class="flow-box flow-ok">
+            ✔️ <b>SIM</b><br>
+            📝 Alteração de Jornada<br>
+            ⏱️ Respeitar descansos<br>
+            <small>(ex.: interjornada)</small>
+          </div>
+        </div>
+
+        <div class="flow-col">
+          <div class="flow-box flow-danger">
+            ❌ <b>NÃO</b><br>
+            <b>Irregular / Vedado</b><br>
+            Fluxo encerrado<br>
+            ➜ passível de apuração
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">⬇️</div>
+
+      <div class="flow-box flow-question">
+        📝 Solicitou <b>formalmente no SEI</b>?<br>
+        <small>(Lançamento no sistema pelo Núcleo de Pessoal).</small>
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-col">
+          <div class="flow-box flow-ok">
+            🟢 <b>Regime de escala</b><br>
+            <b>Intervalo:</b> escala<br>
+            (30min / 1h*)
+          </div>
+        </div>
+
+        <div class="flow-col">
+          <div class="flow-box flow-warn">
+            🟡 <b>Regime administrativo</b><br>
+            <b>Intervalo:</b> admin<br>
+            (1h – 2h)
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-rule">
+        📌 <b>Orientação:</b> o <b>INTERVALO</b> acompanha a <b>JORNADA FORMAL</b>,<br>
+        não a “atividade do dia”.
+      </div>
+    </div>
+  </div>
+
           <div class="tablewrap">
             <table>
               <thead>
                 <tr>
                   <th>Situação</th>
-                  <th>Regramento & Valor</th>
+                  <th>Regramento & Orientações</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <strong>Escala → Admin/Extra</strong><br>
-                    <small>Ex: Treinamento ou convocação em folga</small>
+                    <strong>Empregado de Escala → Jornada Administrativa</strong><br>
+                    <small>Ex.: treinamento, reunião, convocação em dia de folga</small>
                   </td>
                   <td>
-                    Paga-se <strong>Adicional</strong> (de horas extras de 100%, em Sáb, Dom e Feriados).<br>
-                    Deve cumprir intervalo administrativo (1h–2h).
-                    <span class="cite-badge" data-pdf="acordo" data-page="16">ACT Cl. 14 §5</span>
+                    ✔️ <strong>Admissível apenas de forma excepcional</strong>, por necessidade do serviço.<br>
+                    ✔️ Exige <strong>autorização prévia da chefia</strong> e <strong>registro correto no
+                      sistema</strong>.<br>
+                    ✔️ Deve respeitar <strong>intervalo interjornada (mín. 11h)</strong> e descansos legais.<br><br>
+
+                    💰 <strong>Remuneração:</strong><br>
+                    • Horas extras conforme o dia da convocação.<br>
+                    • <strong>100%</strong> quando ocorrer em sábados, domingos ou feriados.<br><br>
+
+                    ⏱️ <strong>Intervalo:</strong><br>
+                    • Aplica-se o intervalo da <strong>jornada administrativa</strong> (1h a 2h).<br>
+
+                    <span class="cite-badge" data-pdf="norma" data-page="7">
+                      Norma — Prorrogação da jornada / convocação fora da escala
+                    </span>
+                    <span class="cite-badge" data-pdf="manual" data-page="11">
+                      Manual — Horas extras: excepcionalidade e autorização
+                    </span>
+                    <span class="cite-badge" data-pdf="acordo" data-page="16">
+                      ACT — Adicional de 100% (Cl. 14 §5º)
+                    </span>
+
+                    <div class="micro-note">
+                      ⚠️ A convocação não altera o regime do empregado nem caracteriza mudança permanente de jornada.
+                    </div>
                   </td>
                 </tr>
+
                 <tr>
                   <td>
-                    <strong>Admin → Escala</strong><br>
-                    <small>Substituição de plantão</small>
+                    <strong>Empregado Administrativo → Jornada de Escala</strong><br>
+                    <small>Ex.: substituição de plantão 12x36 ou 24x72</small>
                   </td>
                   <td>
-                    Intervalo da escala (30min ou 1h).<br>
-                    Ajuda de Custo¹: <strong>R$ 34,36</strong>.
-                    <span class="cite-badge" data-pdf="acordo" data-page="3">ACT Cl. 4 §1*</span>
-                    <div class="micro-note">*Requer solicitação de mundança junto ao Núcleo de Pessoal.</div>
-                    <div class="micro-note">*¹Sem mudança de jornada, a ajuda de custo será a Administrativa.</div>
+                    ❌ <strong>Não permitido de forma pontual, informal ou automática.</strong><br>
+                    ❌ Não existe “ajuda eventual” ou compensação tácita entre regimes distintos.<br><br>
+
+                    ✔️ <strong>Só é possível mediante enquadramento formal</strong>, com:<br>
+                    • Criação de escala específica;<br>
+                    • Autorização da chefia (e Diretoria, quando aplicável);<br>
+                    • Registro no sistema de controle de jornada;<br>
+                    • Comunicação/ajuste junto ao Núcleo de Pessoal.<br><br>
+
+                    ⏱️ <strong>Intervalo intrajornada - regra fundamental:</strong><br>
+                    • <u>Sem mudança formal de regime:</u><br>
+                    &nbsp;&nbsp;→ Aplica-se o intervalo da <strong>jornada administrativa (1h a 2h)</strong>.<br>
+                    • <u>Com mudança formal para escala:</u><br>
+                    &nbsp;&nbsp;→ Aplica-se o intervalo próprio da <strong>escala (30min ou 1h)</strong>.<br><br>
+
+                    💰 <strong>Ajuda de Custo:</strong><br>
+                    • Somente devida quando houver <strong>mudança formal de jornada</strong>.<br>
+                    • Sem enquadramento formal, permanece válida a regra da jornada administrativa.<br>
+
+                    <span class="cite-badge" data-pdf="norma" data-page="12">
+                      Norma — Definição de escala de revezamento
+                    </span>
+                    <span class="cite-badge" data-pdf="norma" data-page="7">
+                      Norma — Vedação a convocações informais
+                    </span>
+                    <span class="cite-badge" data-pdf="manual" data-page="4">
+                      Manual — Responsabilidades do gestor
+                    </span>
+
+                    <div class="micro-note">
+                      ⚠️ O intervalo acompanha o <strong>regime formal</strong>, não a atividade eventual do dia.
+                      Práticas informais expõem a empresa e o gestor a risco trabalhista.
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="panel panel--info" style="margin-top: 20px;">
-            <div class="panel__title">📌 Gestor e Empregados devem zelar pelo cumprimento dos intervalos.</div>
-            <div class="panel__text">
-              Intercorrências podem acontecer, mas, uma boa gestão evita descumprimento de normativos.
-              <strong>Os normativos garantem a saúde dos empregados e da empresa</strong>.
-              <br><br>❌ Por isso, <strong>não é cabível alegar desconhecimento</strong> das regras aplicáveis.
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <div class="panel panel--examples" style="margin-top:20px;">
+            <div class="panel__title">📋 Exemplos práticos — Aplicação correta e consequências</div>
+
+            <div class="tablewrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Situação prática</th>
+                    <th>Regime válido</th>
+                    <th>Intervalo</th>
+                    <th>Consequência / Pagamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td>Escalado convocado em folga para treinamento</td>
+                    <td>Administrativo (excepcional)</td>
+                    <td>1h – 2h</td>
+                    <td>Hora extra (100% se Sáb/Dom/Fer)</td>
+                  </tr>
+
+                  <tr>
+                    <td>Escalado participa de reunião curta (2h)</td>
+                    <td>Administrativo</td>
+                    <td>Dispensável se &lt; 4h</td>
+                    <td>Hora extra proporcional</td>
+                  </tr>
+
+                  <tr>
+                    <td>Administrativo ajuda no plantão sem escala criada</td>
+                    <td>
+                      Administrativo<br>
+                      <span class="badge badge--danger">Irregular</span>
+                    </td>
+                    <td>1h – 2h</td>
+                    <td>Risco trabalhista + orientação formal</td>
+                  </tr>
+
+                  <tr>
+                    <td>Administrativo incluído formalmente em escala 12x36</td>
+                    <td>Escala (formal)</td>
+                    <td>30min ou 1h</td>
+                    <td>Ajuda de custo + regras da escala</td>
+                  </tr>
+
+                  <tr>
+                    <td>Administrativo faz “troca de favor” em plantão</td>
+                    <td>
+                      Nenhum<br>
+                      <span class="badge badge--danger">Vedado</span>
+                    </td>
+                    <td>—</td>
+                    <td>Descumprimento normativo</td>
+                  </tr>
+
+                  <tr>
+                    <td>Convocação sem autorização ou registro</td>
+                    <td>
+                      Nenhum<br>
+                      <span class="badge badge--danger">Vedado</span>
+                    </td>
+                    <td>—</td>
+                    <td>Responsabilização do gestor</td>
+                  </tr>
+
+                  <tr>
+                    <td>Uso contínuo de tolerância para “encaixar” escala</td>
+                    <td>
+                      Administrativo<br>
+                      <span class="badge badge--warn">Irregular</span>
+                    </td>
+                    <td>—</td>
+                    <td>Apuração de conduta</td>
+                  </tr>
+
+                  <tr>
+                    <td>Escalado convocado em dia de descanso sem 11h interjornada</td>
+                    <td>
+                      Nenhum<br>
+                      <span class="badge badge--danger">Vedado</span>
+                    </td>
+                    <td>—</td>
+                    <td>Violação legal + risco jurídico</td>
+                  </tr>
+
+                </tbody>
+              </table>
             </div>
-          </div>
+          </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </details>
+
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <details class="card">
       <summary>
@@ -463,7 +787,7 @@
               <strong>⚠ Atenção:</strong> A utilização contínua dos <strong>15 min de tolerância</strong>
               (entrada/saída)
               para gerar horas extras é <strong>indevida</strong> e passível de apuração de conduta.
-                    <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 7 - Art.29</span>
+              <span class="cite-badge" data-pdf="norma" data-page="5">Norma Pág. 7 - Art.29</span>
             </div>
 
             <div class="bh-cta">
@@ -474,9 +798,20 @@
                 </div>
               </div>
 
-              <button type="button" class="bh-btn bh-btn--primary" data-bh-open>
-                Explicação
-              </button>
+              <button type="button" class="bh-btn bh-btn--primary" data-modal-open data-src="bh_tolerancia/index.html"
+                data-title="📌 Tolerância de 15 min" data-chip="Banco de Horas">Explicação</button>
+
+              <div class="bh-cta" style="margin-top: 10px;">
+                <div class="bh-cta__text">
+                  <b>📘 FAQ interativo</b>
+                  <div class="bh-cta__muted">
+                    Pesquise, filtre por tema e veja diretamente nas <b>bases legais</b>.
+                  </div>
+                </div>
+
+                <button type="button" class="bh-btn" data-modal-open data-src="bh_tolerancia/faq.html"
+                  data-title="FAQ interativo — Jornada, Intervalo e Tolerância" data-chip="FAQ">⁉️</button>
+              </div>
             </div>
 
             <div style="text-align: right; margin-top: 5px;">
@@ -751,26 +1086,6 @@
       </div>
     </footer>
   </main>
-
-  <div id="bhInfoModal" class="bh-modal" aria-hidden="true">
-    <dialog class="bh-modal__panel" id="bhInfoPanel" aria-label="Tolerância de 15 minutos">
-      <header class="bh-modal__header">
-        <div class="bh-modal__title">
-          <span>📌 Tolerância de 15 min</span>
-          <span class="bh-chip">Banco de Horas</span>
-        </div>
-
-        <div class="bh-modal__actions">
-          <button type="button" class="bh-btn" data-bh-open-page>Abrir em página</button>
-          <button type="button" class="bh-btn" data-bh-close>Fechar</button>
-        </div>
-      </header>
-
-      <div class="bh-modal__body">
-        <iframe id="bhInfoFrame" class="bh-modal__iframe" data-src="bh_tolerancia/index.html" src="about:blank"
-          title="Explicação sobre tolerância de 15 minutos" loading="lazy"></iframe>
-      </div>
-  </div>
   </div>
 
   <div id="pdfModal" class="pdf-modal" aria-hidden="true">
@@ -811,25 +1126,121 @@
 
   <!-- <script src="app.js"></script> -->
   <script type="module" src="app.js"></script>
-  <script defer src="bh_tolerancia/modal/bh_modal.js"></script>
 
-</body>
+  <!-- Modal Reutilizável (Explicação, FAQ e futuros conteúdos) -->
+  <div id="appModal" class="bh-modal" aria-hidden="true">
+    <dialog class="bh-modal__panel" id="appModalPanel" aria-label="Modal">
+      <header class="bh-modal__header">
+        <div class="bh-modal__title">
+          <span id="appModalTitle">📌 Conteúdo</span>
+          <span id="appModalChip" class="bh-chip" style="display:none;"></span>
+        </div>
 
-<div id="loginScreen" class="login-overlay">
-  <div class="card login-card">
-    <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
-    <h2>Acesso Restrito</h2>
-    <p class="muted">Informe o PIN para acessar o Guia de Intervalos.</p>
+        <div class="bh-modal__actions">
+          <button type="button" class="bh-btn bh-btn-primary" data-modal-open-page title="Abrir em página">
+            <span class="icon" aria-hidden="true">
+              <!-- external-link -->
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3h7v7"></path>
+                <path d="M10 14L21 3"></path>
+                <path d="M21 14v7H3V3h7"></path>
+              </svg>
+            </span>
+            <span class="label">Abrir em página</span>
+          </button>
 
-    <div class="login-form">
-      <input type="password" id="pinInput" class="pin-input" placeholder="Senha" maxlength="20" />
-      <button type="button" class="btn btn--lg" onclick="validatePin()">Entrar</button>
-    </div>
+          <button type="button" class="bh-btn" data-modal-close title="Fechar">
+            <span class="icon" aria-hidden="true">
+              <!-- x -->
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18"></path>
+                <path d="M6 6l12 12"></path>
+              </svg>
+            </span>
+            <span class="label">Fechar</span>
+          </button>
+        </div>
+      </header>
 
-    <div id="loginError" class="alert alert--warn hidden" style="margin-top: 15px; font-size: 0.9rem;">
-      🚫 PIN Incorreto. Tente novamente.
+      <div class="bh-modal__body">
+        <iframe id="appModalFrame" class="bh-modal__iframe" src="about:blank" title="Conteúdo" loading="lazy"></iframe>
+      </div>
+    </dialog>
+  </div>
+
+  <script defer src="bh_tolerancia/modal/modal_component.js"></script>
+  <div id="loginScreen" class="login-overlay">
+    <div class="card login-card">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+      <h2>Acesso Restrito</h2>
+      <p class="muted">Informe o PIN para acessar o Guia de Intervalos.</p>
+
+      <div class="login-form">
+        <input type="password" id="pinInput" class="pin-input" placeholder="Senha" maxlength="20" />
+        <button type="button" class="btn btn--lg" onclick="validatePin()">Entrar</button>
+      </div>
+
+      <div id="loginError" class="alert alert--warn hidden" style="margin-top: 15px; font-size: 0.9rem;">
+        🚫 PIN Incorreto. Tente novamente.
+      </div>
     </div>
   </div>
+
+
+<!-- ===== Modal local do Fluxo (Situações Excepcionais) ===== -->
+<div id="flowexBackdrop" class="flowex-backdrop" aria-hidden="true">
+  <div class="flowex-modal" role="dialog" aria-modal="true" aria-label="Fluxo - Situações Excepcionais (Intervalos Intrajornada)">
+    <div class="flowex-header">
+      <div class="flowex-title">🔀 <span>Fluxo - Situações Excepcionais - (Intervalo Intrajornada)</span></div>
+      <div class="flowex-actions">
+        <button type="button" class="flowex-close" id="flowexClose" title="Fechar">✕ Fechar</button>
+      </div>
+    </div>
+    <div class="flowex-body" id="flowexBody"></div>
+  </div>
 </div>
+
+
+<script id="flowExModalInit">
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btnOpenFlowEx");
+  const tpl = document.getElementById("tplFlowExcepcionais");
+  const backdrop = document.getElementById("flowexBackdrop");
+  const body = document.getElementById("flowexBody");
+  const closeBtn = document.getElementById("flowexClose");
+
+  if (!btn || !tpl || !backdrop || !body || !closeBtn) return;
+
+  const open = () => {
+    body.innerHTML = tpl.innerHTML;
+    backdrop.style.display = "flex";
+    backdrop.setAttribute("aria-hidden","false");
+    // trap focus simples
+    closeBtn.focus({preventScroll:true});
+  };
+
+  const close = () => {
+    backdrop.style.display = "none";
+    backdrop.setAttribute("aria-hidden","true");
+    body.innerHTML = "";
+    btn.focus({preventScroll:true});
+  };
+
+  btn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && backdrop.getAttribute("aria-hidden") === "false") close();
+  });
+});
+</script>
+
+</body>
 
 </html>

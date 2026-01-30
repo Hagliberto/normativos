@@ -1,0 +1,15 @@
+@"
+# OS/Editor
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node (se um dia você usar)
+node_modules/
+
+# Build (caso gere dist futuramente)
+dist/
+build/
+"@ | Out-File -Encoding utf8 .gitignore
